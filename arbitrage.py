@@ -1,6 +1,19 @@
 #!/usr/bin/env python
 
+
 import json
+
+def readfile(filename):
+   filecontents = ""
+   with open("usdinr.txt", "r") as myfile:
+      filecontents = myfile.read()
+   return json.loads(filecontents)
+
+
+def get_usd_inr_conversionusingreadfile():
+   jsonfile = readfile("usdinr.txt")
+   return jsonfile['rates']['INR']
+
 
 def get_usd_inr_conversion():
    filecontents = ""
@@ -39,7 +52,7 @@ if __name__ == "__main__":
    print("koinex btc : " + str(price_koinex))
    price_gdax = float(get_price_gdax("BTC", "gdax.txt"))
    print("gdax btc : " + str(price_gdax))
-   usd_inr = get_usd_inr_conversion()
+   usd_inr = get_usd_inr_conversionusingreadfile()
    print("usd-inr : " + str(usd_inr))
    print("arbitrage : " + str(calculate_arbitrage(price_gdax, price_koinex, usd_inr))) 
 
