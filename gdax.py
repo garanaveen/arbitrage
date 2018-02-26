@@ -24,6 +24,8 @@ class Gdax(Exchange):
       self.price.eth = get_price("ETH")
 
    
+
+#This is a global method. Should really be a method of this class.
 def get_price(currency):
    url = base_url + currency + "-USD/ticker"
    print("url : "+ url)
@@ -32,6 +34,7 @@ def get_price(currency):
    return  btc_price
 
 
+#This is a global method and should probably reside in a common place like util.py
 def readurl(url,outputFile = "ticker"):
 	output = outputFile
 	if os.path.exists(output):
