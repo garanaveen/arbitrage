@@ -17,6 +17,7 @@ class Exchange:
       self.price.eth = 4
  
    def print_price(self):
+      print("\n")
       print("btc:" + str(self.price.btc))
       print("ltc:" + str(self.price.ltc))
       print("bch:" + str(self.price.bch))
