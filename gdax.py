@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from utils import readurl
 from price import Price
 from exchange import Exchange
 
@@ -8,7 +9,7 @@ import shutil
 import wget
 import os
 
-gdax_btc_url = "https://api.gdax.com/products/BTC-USD/ticker"
+#example for gdax_btc_url = "https://api.gdax.com/products/BTC-USD/ticker"
 base_url = "https://api.gdax.com/products/"
 
 class Gdax(Exchange):
@@ -18,33 +19,15 @@ class Gdax(Exchange):
 
    def get_rates(self):
       self.price = Price()
-      self.price.btc = get_price("BTC")
-      self.price.ltc = get_price("LTC")
-      self.price.bch = get_price("BCH")
-      self.price.eth = get_price("ETH")
+      self.price.btc = self.get_price("BTC")
+      self.price.ltc = self.get_price("LTC")
+      self.price.bch = self.get_price("BCH")
+      self.price.eth = self.get_price("ETH")
 
-   
-
-#This is a global method. Should really be a method of this class.
-def get_price(currency):
-   url = base_url + currency + "-USD/ticker"
-   print("url : "+ url)
-   jsonfile = readurl(url, "gdax_btc.json")
-   btc_price = jsonfile['price']
-   return  btc_price
-
-
-#This is a global method and should probably reside in a common place like util.py
-def readurl(url,outputFile = "ticker"):
-	output = outputFile
-	if os.path.exists(output):
-	   os.remove(output)
-
-	file = wget.download(url,output)
-	f = open(file, 'r')
-	htmlText = "\n".join(f.readlines())
-	f.close()
-
-	return json.loads(htmlText)
-
+   def get_price(self, currency):
+      url = base_url + currency + "-USD/ticker"
+      print("url : "+ url)
+      jsonfile = readurl(url, ".gdax.json")
+      price = jsonfile['price']
+      return  price
 
