@@ -1,22 +1,27 @@
 #!/usr/bin/env python
 
 from exchange import Exchange
+import projectconfig as cfg
 import logging
+
 #Calculates the arbitrage %age between two exhange rates.
 
 class Arbitrage:
-   def __init__(self):
-      #TODO : This should be moved to some config file where all the classes have access to so that logging can be done from anywhere.
+   #TODO : Pass e1 and e2 as constructor parameters and use them while logging.
+   def __init__(self, exchange1, exchange2):
+      self.e1 = exchange1
+      self.e2 = exchange2
+      #This needs to be extracted someplace common.
       logging.basicConfig(filename="arbitrage.log", level=logging.INFO)
    
-   def printarbitrage(self, e1, e2):
-      self.calculate_arbitrage("btc", e1.price.btc, e2.price.btc)
-      self.calculate_arbitrage("ltc", e1.price.ltc, e2.price.ltc)
-      self.calculate_arbitrage("eth", e1.price.eth, e2.price.eth)
-      self.calculate_arbitrage("bch", e1.price.bch, e2.price.bch)
+   def printarbitrage(self):
+      self.calculate_arbitrage("btc", self.e1.price.btc, self.e2.price.btc)
+      self.calculate_arbitrage("ltc", self.e1.price.ltc, self.e2.price.ltc)
+      self.calculate_arbitrage("eth", self.e1.price.eth, self.e2.price.eth)
+      self.calculate_arbitrage("bch", self.e1.price.bch, self.e2.price.bch)
 
    def calculate_arbitrage(self, currency, p1, p2):
       ratio = (p1-p2)*100/p1
-      logging.info(currency + ":" + str(p1) + "," + str(p2) + ", ratio:" + str(ratio))
+      logging.info(currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio))
       
 

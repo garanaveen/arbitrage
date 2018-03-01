@@ -20,7 +20,7 @@ if __name__ == "__main__":
       #koinex.print_price()
 
 
-      arb = Arbitrage()
-      arb.printarbitrage(koinex, gex)
+      arb = Arbitrage(koinex, gex)
+      arb.printarbitrage()
 #      time.sleep(30)
 
