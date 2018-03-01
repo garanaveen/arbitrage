@@ -7,12 +7,9 @@ import logging
 #Calculates the arbitrage %age between two exhange rates.
 
 class Arbitrage:
-   #TODO : Pass e1 and e2 as constructor parameters and use them while logging.
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
-      #This needs to be extracted someplace common.
-      logging.basicConfig(filename="arbitrage.log", level=logging.INFO)
    
    def printarbitrage(self):
       self.calculate_arbitrage("btc", self.e1.price.btc, self.e2.price.btc)
