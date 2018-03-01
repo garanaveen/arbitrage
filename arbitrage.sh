@@ -1,14 +1,14 @@
 #!/bin/bash
 CURRENCY=BTC
-wget https://koinex.in/api/ticker -O koinexprice.txt -o /dev/null
-wget https://api.gdax.com/products/BTC-USD/ticker -O gdaxbtc.txt -o /dev/null
-wget https://api.gdax.com/products/LTC-USD/ticker -O gdaxltc.txt -o /dev/null
-wget https://api.fixer.io/latest?base=USD -O usdinr.txt -o /dev/null
-koinex=$(cat koinexprice.txt | jq -r '.prices.BTC')
-koinexltc=$(cat koinexprice.txt | jq -r '.prices.LTC')
-gdax=$(cat gdaxbtc.txt |jq -r '.price')
-gdaxltc=$(cat gdaxltc.txt |jq -r '.price')
-conversionrate=$(cat usdinr.txt | jq -r '.rates.INR')
+wget https://koinex.in/api/ticker -O .koinexprice.json -o /dev/null
+wget https://api.gdax.com/products/BTC-USD/ticker -O .gdaxbtc.json -o /dev/null
+wget https://api.gdax.com/products/LTC-USD/ticker -O .gdaxltc.json -o /dev/null
+wget https://api.fixer.io/latest?base=USD -O .usdinr.json -o /dev/null
+koinex=$(cat .koinexprice.json | jq -r '.prices.BTC')
+koinexltc=$(cat .koinexprice.json | jq -r '.prices.LTC')
+gdax=$(cat .gdaxbtc.json |jq -r '.price')
+gdaxltc=$(cat .gdaxltc.json |jq -r '.price')
+conversionrate=$(cat .usdinr.json | jq -r '.rates.INR')
 koinexinusd=$(bc -l <<< "scale=2; $koinex/$conversionrate")
 koinexltcinusd=$(bc -l <<< "scale=2; $koinexltc/$conversionrate")
 difference=$(bc -l <<< "scale=2; $gdax-$koinexinusd")
