@@ -1,23 +1,24 @@
 #!/usr/bin/env python
 
-
 import json
 import shutil
 import wget
 import os
+import projectconfig as cfg
 
-
-#This is a global method and should probably reside in a common place like util.py
 def readurl(url,outputFile = "ticker"):
-	output = outputFile
-	if os.path.exists(output):
-	   os.remove(output)
+   output = outputFile
 
-	file = wget.download(url,output)
-	f = open(file, 'r')
-	htmlText = "\n".join(f.readlines())
-	f.close()
+   file = output
+   if cfg.livequote:
+      if os.path.exists(output):
+         os.remove(output)
 
-	return json.loads(htmlText)
+      file = wget.download(url,output)
 
+   f = open(file, 'r')
+   htmlText = "\n".join(f.readlines())
+   f.close()
+
+   return json.loads(htmlText)
 

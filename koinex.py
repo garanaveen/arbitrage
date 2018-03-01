@@ -4,6 +4,7 @@ from utils import readurl
 from price import Price
 from exchange import Exchange
 from exchangerate import get_exchangerate
+import projectconfig as cfg
 
 import json
 import shutil
