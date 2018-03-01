@@ -27,6 +27,6 @@ class Gdax(Exchange):
    def get_price(self, currency):
       url = base_url + currency + "-USD/ticker"
       jsonfile = readurl(url, ".gdax.json")
-      price = jsonfile['price']
+      price = float(jsonfile['price'])
       return  price
 
