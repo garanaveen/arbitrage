@@ -12,6 +12,7 @@ class Arbitrage:
       self.e2 = exchange2
    
    def printarbitrage(self):
+      cfg.logger.info("-------------------------------")
       self.calculate_arbitrage("btc", self.e1.price.btc, self.e2.price.btc)
       self.calculate_arbitrage("ltc", self.e1.price.ltc, self.e2.price.ltc)
       self.calculate_arbitrage("eth", self.e1.price.eth, self.e2.price.eth)
