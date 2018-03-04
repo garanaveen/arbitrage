@@ -1,7 +1,9 @@
 # arbitrage
 
 How to use the script,
+
 Run ./main.py
+
 To run it every 30 seconds change the main.py to uncomment while loop and sleep(30)
 
 Packages needed for running the python script,
