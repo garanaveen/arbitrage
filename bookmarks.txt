@@ -1,0 +1,8 @@
+
+Serves as an good example to package the files.
+https://github.com/pypa/sampleproject/
+
+
+OpenShift (An alternative to AWS?) example to plugin a python code,
+https://github.com/sclorg/django-ex
+https://console.starter-us-west-2.openshift.com/console/project/firsttestng/overview
