@@ -6,3 +6,7 @@ https://github.com/pypa/sampleproject/
 OpenShift (An alternative to AWS?) example to plugin a python code,
 https://github.com/sclorg/django-ex
 https://console.starter-us-west-2.openshift.com/console/project/firsttestng/overview
+
+
+Sending an email from python,
+https://medium.freecodecamp.org/send-emails-using-code-4fcea9df63f
