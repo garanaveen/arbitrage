@@ -6,6 +6,8 @@ import wget
 import os
 import projectconfig as cfg
 
+#TODO : Handle invalid json file
+
 def readurl(url,outputFile = "ticker"):
    output = outputFile
 
