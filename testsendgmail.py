@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
+source .emailcredentials.txt
 import smtplib
-to_addr_list = ['sampleemail@gmail.com']
+to_addr_list = TOADDRESSLIST
 message = 'Test email from Va'
 server = smtplib.SMTP('smtp.gmail.com:587')
 server.starttls()
