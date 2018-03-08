@@ -16,3 +16,5 @@ server.quit()
 #For sending emails programmaticaly,
 #https://login.mailchimp.com/signup/success/ 
 
+
+#https://www.quora.com/What-is-the-recommended-way-to-send-email-programmatically-with-Java
