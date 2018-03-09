@@ -1,8 +1,11 @@
 BEGIN TRANSACTION;
 
+DROP TABLE PriceHistory;
+
 CREATE TABLE PriceHistory(
-RelativeTimeStamp integer
-TimeStampStr text
+Exchange text,
+RelativeTimeStamp integer,
+TimeStampStr text,
 CurrencyCode text,
 Price real
 );

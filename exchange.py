@@ -22,3 +22,8 @@ class Exchange:
       print("ltc:" + str(self.price.ltc))
       print("bch:" + str(self.price.bch))
       print("eth:" + str(self.price.eth))
+   
+   def store_rates(self):
+      print "TODO : store_rates to the PriceHistory.db"
+      #TODO : open PriceHistory.db and store the price
+

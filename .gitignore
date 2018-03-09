@@ -1,4 +1,4 @@
 *.pyc
 *.json
-.emailcredentials.txt
+emailcredentials.py
 *.db
