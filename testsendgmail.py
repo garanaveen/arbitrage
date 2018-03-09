@@ -9,9 +9,8 @@ message = 'Test email from Va'
 server = smtplib.SMTP('smtp.gmail.com:587')
 server.starttls()
 server.login(USERNAME, PASSWORD)
-for i in range(5):
-   problems = server.sendmail(USERNAME, to_addr_list, message)
-   time.sleep(3)
+problems = server.sendmail(USERNAME, to_addr_list, message)
+time.sleep(3)
 server.quit()
 
 
