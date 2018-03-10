@@ -3,7 +3,7 @@
 import logging
 import sys
 
-LOG_TO_STDOUT=True
+LOG_TO_STDOUT=False
 
 logger = logging.getLogger('arbitrage')
 logger.setLevel(logging.DEBUG)
@@ -18,6 +18,12 @@ else:
 
 logger.addHandler(fh)
 
-#livequote = False
-livequote = True #This gets the quotes online everytime. Time consuming.
+#LIVEQUOTE = False
+LIVEQUOTE = True
+#This gets the quotes online everytime. Time consuming.
+
+
+QUOTETYPE = "lasttraded"
+#QUOTETYPE = "highest_bid"
+#QUOTETYPE = "lowest_ask"
 

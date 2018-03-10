@@ -12,7 +12,7 @@ def readurl(url,outputFile = "ticker"):
    output = outputFile
 
    file = output
-   if cfg.livequote:
+   if cfg.LIVEQUOTE:
       if os.path.exists(output):
          os.remove(output)
 

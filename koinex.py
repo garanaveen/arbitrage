@@ -26,7 +26,7 @@ class Koinex(Exchange):
       #usdinrrate = 1
       
       #If True get the price that people are willing to buy. Else get the last trade price.
-      if True:
+      if cfg.QUOTETYPE == "highest_bid":
          self.price.btc = float(jsonfile['stats']['BTC']['highest_bid'])/usdinrrate
          self.price.ltc = float(jsonfile['stats']['LTC']['highest_bid'])/usdinrrate
          self.price.eth = float(jsonfile['stats']['ETH']['highest_bid'])/usdinrrate
