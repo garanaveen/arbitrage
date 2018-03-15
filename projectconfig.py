@@ -3,7 +3,7 @@
 import logging
 import sys
 
-LOG_TO_STDOUT=False
+LOG_TO_STDOUT=True
 
 logger = logging.getLogger('arbitrage')
 logger.setLevel(logging.DEBUG)

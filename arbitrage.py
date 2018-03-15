@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from exchange import Exchange
+import  notify as ntf
 import projectconfig as cfg
 import logging
 
@@ -20,6 +21,9 @@ class Arbitrage:
 
    def calculate_arbitrage(self, currency, p1, p2):
       ratio = (p1-p2)*100/p1
-      cfg.logger.info(currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio))
+      stringToPrint = currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) + "\n"
+      if("ltc" == currency) and (ratio > 8):
+         ntf.notifyviaemail(stringToPrint)
+      cfg.logger.info(stringToPrint)
       
 
