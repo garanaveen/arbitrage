@@ -31,6 +31,12 @@ class Koinex(Exchange):
          self.price.ltc = float(jsonfile['stats']['LTC']['highest_bid'])/usdinrrate
          self.price.eth = float(jsonfile['stats']['ETH']['highest_bid'])/usdinrrate
          self.price.bch = float(jsonfile['stats']['BCH']['highest_bid'])/usdinrrate
+      elif cfg.QUOTETYPE == "lowest_ask":
+
+         self.price.btc = float(jsonfile['stats']['BTC']['lowest_ask'])/usdinrrate
+         self.price.ltc = float(jsonfile['stats']['LTC']['lowest_ask'])/usdinrrate
+         self.price.eth = float(jsonfile['stats']['ETH']['lowest_ask'])/usdinrrate
+         self.price.bch = float(jsonfile['stats']['BCH']['lowest_ask'])/usdinrrate
       else:
          self.price.btc = float(jsonfile['prices']['BTC'])/usdinrrate
          self.price.ltc = float(jsonfile['prices']['LTC'])/usdinrrate

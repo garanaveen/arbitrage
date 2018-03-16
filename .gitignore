@@ -2,3 +2,4 @@
 *.json
 emailcredentials.py
 *.db
+history_arbitrage.log

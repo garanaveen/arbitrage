@@ -11,7 +11,7 @@ import time
 
 if __name__ == "__main__":
 
-#   while True:
+   while True:
       gex = Gdax()
       gex.get_rates()
       #gex.print_price()
@@ -27,5 +27,5 @@ if __name__ == "__main__":
       arb.printarbitrage()
       checkforpricefluctuations('KOINEX')
       checkforpricefluctuations('GDAX')
-#      time.sleep(30)
+      time.sleep(30)
 
