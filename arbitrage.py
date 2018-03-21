@@ -24,7 +24,7 @@ class Arbitrage:
    def calculate_arbitrage(self, currency, p1, p2):
       ratio = (p1-p2)*100/p1
       stringToPrint = currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) + "\n"
-      if(ratio < 2):
+      if(ratio > 8):
          self.notifymessage = self.notifymessage +"\n" + stringToPrint
          print stringToPrint
       cfg.logger.info(stringToPrint)

@@ -1,6 +1,12 @@
 
 #User should be able to get notifications by adding entries here.
 
+#Format
+#MyAlerts['code']['transactiontype']['lessthanorgreaterthan'] = 3
+
+#Try to make this more readable!
+#LTC-BUY<2
+
 
 #If arbitrage for buy price of LTC is lessthan 3%, notify me.
 MyAlerts['ltc']['buy']['lessthan'] = 3
