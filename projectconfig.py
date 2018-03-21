@@ -36,6 +36,8 @@ logger.addHandler(fh)
 
 #QUOTETYPE = "lasttraded"
 #QUOTETYPE = "highest_bid"
+
+#lowest_ask is your buy price (i.e. someone is ready to sell you for that price)
 QUOTETYPE = "lowest_ask"
 
 LOG_TO_STDOUT=True
