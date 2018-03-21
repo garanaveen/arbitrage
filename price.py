@@ -1,10 +1,12 @@
 
 class Price:
+   btc = 0
+   ltc = 0
+   bch = 0
+   eth = 0
+
    def __init__(self):
-      self.btc = 0
-      self.ltc = 0
-      self.bch = 0
-      self.eth = 0
+      pass
 
 
 

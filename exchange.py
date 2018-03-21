@@ -3,14 +3,17 @@
 from price import Price
 
 class Exchange:
+   price = Price()
+   name = "Exchange"
+
    def __init__(self):
-      self.name = "Exchange"
+      pass
 
    def __str__(self):
       return self.name
 
    def get_rates(self):
-      self.price = Price()
+      "Default rates. This method is supposed to be overridden by derived class and price should be set based on live quote for the exchange."
       self.price.btc = 1
       self.price.ltc = 2
       self.price.bch = 3
@@ -24,6 +27,7 @@ class Exchange:
       print("eth:" + str(self.price.eth))
    
    def store_rates(self):
-      print "TODO : store_rates to the PriceHistory.db"
+      pass
+      #print "TODO : store_rates to the PriceHistory.db"
       #TODO : open PriceHistory.db and store the price
 
