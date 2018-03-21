@@ -5,7 +5,7 @@ from exchange import Exchange
 from gdax import Gdax
 from koinex import Koinex
 from exchangerate import get_exchangerate
-from arbitrage import Arbitrage
+from calculatearbitrage import CalculateArbitrage
 
 import time
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
       koinex.store_rates()
 
 
-      arb = Arbitrage(koinex, gex)
+      arb = CalculateArbitrage(koinex, gex)
       arb.printarbitrage()
       checkforpricefluctuations('KOINEX')
       checkforpricefluctuations('GDAX')

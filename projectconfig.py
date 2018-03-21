@@ -42,3 +42,4 @@ QUOTETYPE = "lowest_ask"
 
 LOG_TO_STDOUT=True
 DEVELOPER_MODE=True
+LIVEQUOTE = True

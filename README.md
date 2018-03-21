@@ -2,7 +2,7 @@
 
 How to use the script,
 
-Run ./main.py
+Run ./arbitrage
 
 To run it every 30 seconds change the main.py to uncomment while loop and sleep(30)
 

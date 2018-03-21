@@ -7,7 +7,7 @@ import logging
 
 #Calculates the arbitrage %age between two exhange rates.
 
-class Arbitrage:
+class CalculateArbitrage:
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
