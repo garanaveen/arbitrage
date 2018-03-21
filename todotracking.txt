@@ -6,5 +6,10 @@ Implement parse_args with the following options,
 --verbose
 --exchange (default to gdax-usa and koinex-india)
 --notify (accept list of emails to be notified?)
+--loop --noloop
+--frequency (How frequently do you want to poll for new quotes - examples : 30s, 1m, 2m, 1h, 6h, 12h, 1d)
 
 
+Packaging of this so that it can be easily installed and the program can be executed with a command (say "arbitrage")
+Example of command,
+arbitrage --exchange gdax --exchange koinex --loop --freqency 1m --notify nriarbitrage@gmail.com --verbose
