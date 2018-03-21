@@ -5,12 +5,17 @@ import time
 import smtplib
 
 #TODO : Send email to the configured email address if there is a huge price difference in a short span of time.
-#If the price becomes +/-3% with in 5 minutes then notify.
+#If the price becomes +/-y% with in x minutes then notify.
+#Check the testsendgmail.py for the code to send email.
 
 
 def checkforpricefluctuations(exchange):
    print "In checkforpricefluctuations"
-   #TODO : Get the average price for every currency of this exchange for the past 5 minutes and if the difference is more than 3%, send email.
+   # 1% in a span of 2 minutes is consider big.
+   # 2% in a span of 5 minutes is consider big.
+   # 3% in a span of 30 minutes is consider big.
+   #TODO : Get the average price for every currency of this exchange for the past x minutes and if the difference is more than y%, send email.
+ 
 
 
 def notifyviaemail(messageBody):
