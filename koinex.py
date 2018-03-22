@@ -17,14 +17,14 @@ class Koinex(Exchange):
 
    def __init__(self):
       self.name = "Koinex"
+      cfg.print_quote_type()
 
    def get_rates(self):
       self.price = Price()
       jsonfile = readurl(base_url, ".koinex.json")
 
       usdinrrate = get_exchangerate()
-      #usdinrrate = 1
-      
+
       #If True get the price that people are willing to buy. Else get the last trade price.
       if cfg.QUOTETYPE == "highest_bid":
          self.price.btc = float(jsonfile['stats']['BTC']['highest_bid'])/usdinrrate
@@ -42,4 +42,5 @@ class Koinex(Exchange):
          self.price.ltc = float(jsonfile['prices']['LTC'])/usdinrrate
          self.price.eth = float(jsonfile['prices']['ETH'])/usdinrrate
          self.price.bch = float(jsonfile['prices']['BCH'])/usdinrrate
+
 

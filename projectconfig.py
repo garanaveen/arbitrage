@@ -27,9 +27,9 @@ QUOTETYPE = "highest_bid"
 #lowest_ask is your buy price (i.e. someone is ready to sell for that price)
 #QUOTETYPE = "lowest_ask"
 
-LOG_TO_STDOUT=True
+LOG_TO_STDOUT=False
 DEVELOPER_MODE=True
-LIVEQUOTE = False
+LIVEQUOTE = True
 
 
 logger = logging.getLogger('arbitrage')
@@ -46,3 +46,12 @@ else:
 logger.addHandler(fh)
 
 
+def print_quote_type():
+   transactionType = "lasttraded"
+   if QUOTETYPE == "highest_bid":
+      transactionType = "sellprice"
+   elif QUOTETYPE == "lowest_ask":
+      transactionType = "buyprice"
+   quoteType = "QUOTETYPE : " + QUOTETYPE + " : " + transactionType
+
+   logger.info(quoteType)
