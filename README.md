@@ -20,3 +20,5 @@ arbitrage.sh used for quick changes. Not the part of python project
 OpenShift (An alternative to AWS?)
 https://github.com/sclorg/django-ex
 https://console.starter-us-west-2.openshift.com/console/project/firsttestng/overview
+
+

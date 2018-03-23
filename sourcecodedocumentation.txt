@@ -1,0 +1,8 @@
+.koinex.json
+Download json file for an exchange containing the live quotes (say .koinex.json for Koinex exchange)
+
+Other currencies are converted to USD for calculating arbitrage %age.
+Live exchange rate from other currencies to USD is also downloaded to .exchangerate.json
+
+
+
