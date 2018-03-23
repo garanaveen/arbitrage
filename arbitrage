@@ -2,8 +2,8 @@
 
 from notify import checkforpricefluctuations
 from exchange import Exchange
-from gdax import Gdax
-from koinex import Koinex
+from gdax import gdax
+from koinex import koinex
 from exchangerate import get_exchangerate
 from calculatearbitrage import CalculateArbitrage
 
@@ -12,12 +12,12 @@ import time
 if __name__ == "__main__":
 
    while True:
-      gex = Gdax()
+      gex = gdax()
       gex.get_rates()
       #gex.print_price()
       gex.store_rates()
 
-      koinex = Koinex()
+      koinex = koinex()
       koinex.get_rates()
       #koinex.print_price()
       koinex.store_rates()
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
       arb = CalculateArbitrage(koinex, gex)
       arb.printarbitrage()
-      checkforpricefluctuations('KOINEX')
-      checkforpricefluctuations('GDAX')
+      checkforpricefluctuations('koinex')
+      checkforpricefluctuations('gdax')
       time.sleep(30)
 

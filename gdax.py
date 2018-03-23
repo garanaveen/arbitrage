@@ -12,10 +12,10 @@ import os
 #example for gdax_btc_url = "https://api.gdax.com/products/BTC-USD/ticker"
 base_url = "https://api.gdax.com/products/"
 
-class Gdax(Exchange):
+class gdax(Exchange):
 
    def __init__(self):
-      self.name = "Gdax"
+      self.name = "gdax"
 
    def get_rates(self):
       self.price = Price()
@@ -26,7 +26,7 @@ class Gdax(Exchange):
 
    def get_price(self, currency):
       url = base_url + currency + "-USD/ticker"
-      cache_file_name = ".gdax" + currency + ".json"
+      cache_file_name = ".GDax" + currency + ".json"
       jsonfile = readurl(url, cache_file_name)
       price = float(jsonfile['price'])
       return  price

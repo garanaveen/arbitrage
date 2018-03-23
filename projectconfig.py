@@ -22,10 +22,10 @@ print ("sys.platform : " + sys.platform)
 #QUOTETYPE = "lasttraded"
 
 #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)
-QUOTETYPE = "highest_bid"
+#QUOTETYPE = "highest_bid"
 
 #lowest_ask is your buy price (i.e. someone is ready to sell for that price)
-#QUOTETYPE = "lowest_ask"
+QUOTETYPE = "lowest_ask"
 
 DEVELOPER_MODE=True
 LIVEQUOTE = True
