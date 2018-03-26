@@ -3,6 +3,7 @@
 import logging
 import sys
 
+emailcount = 0
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):

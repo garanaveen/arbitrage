@@ -3,6 +3,8 @@
 from emailcredentials import USERNAME, PASSWORD, TOADDRESSLIST
 import time
 import smtplib
+import projectconfig as cfg
+
 
 #TODO : Send email to the configured email address if there is a huge price difference in a short span of time.
 #If the price becomes +/-y% with in x minutes then notify.
@@ -20,6 +22,8 @@ def checkforpricefluctuations(exchange):
 
 def notifyviaemail(messageBody):
     if messageBody:
+      if(cfg.emailcount < 20):
+        cfg.emailcount = cfg.emailcount + 1
         print "messageBody is not empty"
 	print ("In notify : sending" + messageBody)
 	print (type(messageBody))
