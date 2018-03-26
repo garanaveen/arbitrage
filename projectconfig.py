@@ -8,12 +8,14 @@ emailcount = 0
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
    DEVELOPER_MODE=True #This doesn't loop and prints to stdout
+   POLLTIME = 1
    #This variable gets the quotes online everytime. Time consuming if True. 
    #Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
    LIVEQUOTE = False
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
 else:
+   POLLTIME = 30
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
 
