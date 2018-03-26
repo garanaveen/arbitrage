@@ -7,25 +7,36 @@ from koinex import Koinex
 from exchangerate import get_exchangerate
 from calculatearbitrage import CalculateArbitrage
 
+import projectconfig as cfg
+
+
 import time
+
+def calculate_arbitrage(quoteType):
+    cfg.QUOTETYPE = quoteType
+    gex = Gdax()
+    gex.get_rates()
+    #gex.print_price()
+    gex.store_rates()
+
+    koinex = Koinex()
+    koinex.get_rates()
+    #koinex.print_price()
+    koinex.store_rates()
+
+    arb = CalculateArbitrage(koinex, gex)
+    arb.printarbitrage()
+    checkforpricefluctuations('KOINEX')
+    checkforpricefluctuations('GDAX')
+
 
 if __name__ == "__main__":
 
    while True:
-      gex = Gdax()
-      gex.get_rates()
-      #gex.print_price()
-      gex.store_rates()
-
-      koinex = Koinex()
-      koinex.get_rates()
-      #koinex.print_price()
-      koinex.store_rates()
-
-
-      arb = CalculateArbitrage(koinex, gex)
-      arb.printarbitrage()
-      checkforpricefluctuations('KOINEX')
-      checkforpricefluctuations('GDAX')
+      calculate_arbitrage("highest_bid")
+      cfg.LIVEQUOTE = False
+      calculate_arbitrage("lowest_ask")
+      cfg.LIVEQUOTE = True
       time.sleep(30)
+
 
