@@ -14,17 +14,17 @@ import time
 
 def calculate_arbitrage(quoteType):
     cfg.QUOTETYPE = quoteType
-    gex = Gdax()
+    gex = gdax()
     gex.get_rates()
     #gex.print_price()
     gex.store_rates()
 
-    koinex = Koinex()
-    koinex.get_rates()
-    #koinex.print_price()
-    koinex.store_rates()
+    koine = koinex()
+    koine.get_rates()
+    #koine.print_price()
+    koine.store_rates()
 
-    arb = CalculateArbitrage(koinex, gex)
+    arb = CalculateArbitrage(koine, gex)
     arb.printarbitrage()
     checkforpricefluctuations('KOINEX')
     checkforpricefluctuations('GDAX')
