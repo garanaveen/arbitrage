@@ -2,8 +2,8 @@
 
 from notify import checkforpricefluctuations
 from exchange import Exchange
-from gdax import Gdax
-from koinex import Koinex
+from gdax import gdax
+from koinex import koinex
 from exchangerate import get_exchangerate
 from calculatearbitrage import CalculateArbitrage
 

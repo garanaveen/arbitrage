@@ -13,10 +13,10 @@ import os
 
 base_url = "https://koinex.in/api/ticker"
 
-class Koinex(Exchange):
+class koinex(Exchange):
 
    def __init__(self):
-      self.name = "Koinex"
+      self.name = "koinex"
       cfg.print_quote_type()
 
    def get_rates(self):

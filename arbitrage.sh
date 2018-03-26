@@ -16,11 +16,11 @@ differenceltc=$(bc -l <<< "scale=2; $gdaxltc-$koinexltcinusd")
 ratio=$(bc -l <<< "scale=2; $difference*100/$gdax")
 ratioltc=$(bc -l <<< "scale=2; $differenceltc*100/$gdaxltc")
 
-echo "Gdax : $gdax"
-echo "Koinex : $koinex"
-echo "Koinexinusd : $koinexinusd"
+echo "gdax : $gdax"
+echo "koinex : $koinex"
+echo "koinexinusd : $koinexinusd"
 echo "Ratio : $ratio%"
-#echo "Koinex : $koinex"
+#echo "koinex : $koinex"
 echo "If ratio is positive then sell on gdax and buy on koinex"
 currentdate=$(date "+%Y-%m-%d-%H:%M:%S")
 echo "currentdate: $currentdate"
