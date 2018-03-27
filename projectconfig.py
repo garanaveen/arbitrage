@@ -15,6 +15,7 @@ if sys.platform.startswith('linux'):
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
 else:
+   DEVELOPER_MODE = False
    POLLTIME = 30
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
@@ -31,7 +32,7 @@ LOG_TO_STDOUT=True
 #lowest_ask is your buy price (i.e. someone is ready to sell for that price)
 QUOTETYPE = "lowest_ask"
 
-DEVELOPER_MODE=True
+#DEVELOPER_MODE=True
 LIVEQUOTE = True
 
 

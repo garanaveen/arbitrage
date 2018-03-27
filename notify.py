@@ -21,7 +21,8 @@ def checkforpricefluctuations(exchange):
 
 
 def notifyviaemail(messageBody):
-    if messageBody:
+
+    if (messageBody) and (not cfg.DEVELOPER_MODE):
       if(cfg.emailcount < 20):
         cfg.emailcount = cfg.emailcount + 1
 	to_addr_list = TOADDRESSLIST

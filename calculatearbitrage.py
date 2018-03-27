@@ -35,7 +35,7 @@ def match_notify_conditions(ratio):
    retVal = False
    if ((ratio > 11) and cfg.QUOTETYPE == "highest_bid"):
       retVal = True
-   if ((ratio < 3) and cfg.QUOTETYPE == "lowest_ask"):
+   if ((ratio < 7) and cfg.QUOTETYPE == "lowest_ask"):
       retVal = True
 
    return retVal
