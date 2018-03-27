@@ -24,10 +24,6 @@ def notifyviaemail(messageBody):
     if messageBody:
       if(cfg.emailcount < 20):
         cfg.emailcount = cfg.emailcount + 1
-        print "messageBody is not empty"
-	print ("In notify : sending" + messageBody)
-	print (type(messageBody))
-
 	to_addr_list = TOADDRESSLIST
 	message = "Message Subject\n" + messageBody 
 	server = smtplib.SMTP('smtp.gmail.com:587')

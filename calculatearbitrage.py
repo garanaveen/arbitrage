@@ -33,9 +33,9 @@ class CalculateArbitrage:
 
 def match_notify_conditions(ratio):
    retVal = False
-   if ((ratio > 8) and cfg.QUOTETYPE == "highest_bid"):
+   if ((ratio > 11) and cfg.QUOTETYPE == "highest_bid"):
       retVal = True
-   if ((ratio < 1) and cfg.QUOTETYPE == "lowest_ask"):
+   if ((ratio < 3) and cfg.QUOTETYPE == "lowest_ask"):
       retVal = True
 
    return retVal

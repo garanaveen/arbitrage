@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-
-
 import json
 import shutil
 import wget
@@ -16,17 +14,21 @@ def parse_my_alert_settings():
    print("parse")
 
    f = open(FILE_NAME, 'r')
-   myalert = f.readline()
+   myalert = "dummyline"
+   #TODO : If its not "LTC<2" format, ignore that line.
    while myalert:
+       myalert = f.readline()
        if '>' in myalert:
           transactionType = "sell"
           currency,ratio = myalert.split('>')
-       if '<' in myalert:
+       elif '<' in myalert:
           transactionType = "buy"
           currency,ratio = myalert.split('<')
+       else:
+          #ignore this line
+          continue
 
-       print "currency : " + currency + ", transactionType : " + transactionType + ", ratio : " + ratio 
-       myalert = f.readline()
+       print "currency : " + currency.lower() + ", transactionType : " + transactionType + ", ratio : " + ratio 
 
    f.close()
 
