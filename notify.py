@@ -12,7 +12,8 @@ import projectconfig as cfg
 
 
 def checkforpricefluctuations(exchange):
-   print "In checkforpricefluctuations"
+   pass
+   #print "In checkforpricefluctuations"
    # 1% in a span of 2 minutes is consider big.
    # 2% in a span of 5 minutes is consider big.
    # 3% in a span of 30 minutes is consider big.
@@ -21,15 +22,13 @@ def checkforpricefluctuations(exchange):
 
 
 def notifyviaemail(messageBody):
-
-    if (messageBody) and (not cfg.DEVELOPER_MODE):
-      if(cfg.emailcount < 20):
-        cfg.emailcount = cfg.emailcount + 1
-	to_addr_list = TOADDRESSLIST
-	message = "Message Subject\n" + messageBody 
-	server = smtplib.SMTP('smtp.gmail.com:587')
-	server.starttls()
-	server.login(USERNAME, PASSWORD)
-	problems = server.sendmail(USERNAME, to_addr_list, message)
-	server.quit()
+   if messageBody and  cfg.DEVELOPER_MODE != True and cfg.emailcount < 20:
+      cfg.emailcount = cfg.emailcount + 1
+      to_addr_list = TOADDRESSLIST
+      message = "Message Subject\n" + messageBody 
+      server = smtplib.SMTP('smtp.gmail.com:587')
+      server.starttls()
+      server.login(USERNAME, PASSWORD)
+      problems = server.sendmail(USERNAME, to_addr_list, message)
+      server.quit()
 

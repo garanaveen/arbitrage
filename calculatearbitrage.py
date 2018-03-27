@@ -26,7 +26,7 @@ class CalculateArbitrage:
       stringToPrint = currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) 
       if(match_notify_conditions(ratio)):
          self.notifymessage = self.notifymessage +"\n" + stringToPrint
-         print stringToPrint
+         #print stringToPrint
       cfg.logger.info(stringToPrint)
       
 

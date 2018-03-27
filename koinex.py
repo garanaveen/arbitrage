@@ -17,6 +17,7 @@ class koinex(Exchange):
 
    def __init__(self):
       self.name = "koinex"
+      self.native = False
       cfg.print_quote_type()
 
    def get_rates(self):

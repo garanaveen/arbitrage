@@ -4,6 +4,8 @@ from price import Price
 
 class Exchange:
    price = Price()
+   nativePrice = Price()
+   native = True #If this exchange is not in USD, then assign it to false.
    name = "Exchange"
 
    def __init__(self):
