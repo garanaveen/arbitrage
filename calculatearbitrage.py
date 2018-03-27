@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from exchange import Exchange
+from alertsettings import AlertSettings
 import  notify as ntf
 import projectconfig as cfg
 import logging
@@ -8,6 +9,7 @@ import logging
 #Calculates the arbitrage %age between two exhange rates.
 
 class CalculateArbitrage:
+   alrtSettings = AlertSettings()
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
@@ -23,9 +25,9 @@ class CalculateArbitrage:
 
    def calculate_arbitrage(self, currency, p1, p2):
       ratio = (p1-p2)*100/p1
-      stringToPrint = currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) 
-      if(match_notify_conditions(ratio)):
-         self.notifymessage = self.notifymessage +"\n" + stringToPrint
+      stringToPrint = cfg.get_transaction_type() + " : " + currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) 
+      if(self.alrtSettings.is_alert_settings_matched(currency, ratio)):
+         self.notifymessage = self.notifymessage + stringToPrint + "\n" 
          #print stringToPrint
       cfg.logger.info(stringToPrint)
       

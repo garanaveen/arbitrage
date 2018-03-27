@@ -33,7 +33,7 @@ LOG_TO_STDOUT=True
 QUOTETYPE = "lowest_ask"
 
 #DEVELOPER_MODE=True
-LIVEQUOTE = True
+LIVEQUOTE = False
 
 
 logger = logging.getLogger('arbitrage')
@@ -50,12 +50,18 @@ else:
 logger.addHandler(fh)
 
 
+   
+
 def print_quote_type():
+   transactionType = get_transaction_type()
+   quoteType = "QUOTETYPE : " + QUOTETYPE + " : " + transactionType
+   logger.info(quoteType)
+   
+def get_transaction_type():
    transactionType = "lasttraded"
    if QUOTETYPE == "highest_bid":
-      transactionType = "sellprice"
+      transactionType = "sell"
    elif QUOTETYPE == "lowest_ask":
-      transactionType = "buyprice"
-   quoteType = "QUOTETYPE : " + QUOTETYPE + " : " + transactionType
+      transactionType = "buy"
+   return transactionType
 
-   logger.info(quoteType)
