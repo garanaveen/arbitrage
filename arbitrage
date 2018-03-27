@@ -37,6 +37,9 @@ if __name__ == "__main__":
       cfg.LIVEQUOTE = False
       calculate_arbitrage("lowest_ask")
       cfg.LIVEQUOTE = True
-      time.sleep(30)
+      if(cfg.DEVELOPER_MODE):
+         break
+
+      time.sleep(cfg.POLLTIME)
 
 
