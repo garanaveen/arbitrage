@@ -24,3 +24,7 @@ def readurl(url,outputFile = "ticker"):
 
    return json.loads(htmlText)
 
+
+if __name__ == "__main__":
+   url="https://api.fixer.io/latest?base=USD"
+   exchangeratejson = readurl(url, "dummyexchangerate.json")
