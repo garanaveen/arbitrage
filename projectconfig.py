@@ -33,7 +33,7 @@ LOG_TO_STDOUT=True
 QUOTETYPE = "lowest_ask"
 
 #DEVELOPER_MODE=True
-LIVEQUOTE = False
+LIVEQUOTE = True
 
 
 logger = logging.getLogger('arbitrage')

@@ -57,12 +57,16 @@ class AlertSettings:
    def print_everything(self):
       for a in self.alerts[:]:
          print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
+   def is_currency_same(self, alertcurrency, currentcurrency):
+      retVal = (alertcurrency == currentcurrency) or (alertcurrency == "all")
+      #print "alertcurrency : " + alertcurrency + ", currentcurrency : " + currentcurrency + ", retVal : " + str(retVal)
+      return retVal
 
    def is_alert_settings_matched(self, currency, ratio):
       matched = False
       for a in self.alerts[:]:
          #print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
-         if a.currency == currency and a.transaction_type == cfg.get_transaction_type():
+         if self.is_currency_same(a.currency, currency) and a.transaction_type == cfg.get_transaction_type():
             if(cfg.get_transaction_type() == "sell") and (ratio > a.ratio):
                   matched = True
             if(cfg.get_transaction_type() == "buy") and (ratio < a.ratio):
@@ -72,8 +76,7 @@ class AlertSettings:
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
    print "QUOTETYPE : " + cfg.get_transaction_type()
-   if (alrtSettings.is_alert_settings_matched('ltc', 3.5)):
+   if (alrtSettings.is_alert_settings_matched('ltc', 4.5)):
       print "success"
    else:
       print "failure"
-
