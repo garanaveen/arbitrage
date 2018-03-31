@@ -25,7 +25,7 @@ class CalculateArbitrage:
 
    def calculate_arbitrage(self, currency, p1, p2):
       ratio = (p1-p2)*100/p1
-      stringToPrint = cfg.get_transaction_type() + " : " + currency + "-" + str(self.e1) + ":" + str(p1) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(ratio) 
+      stringToPrint =  currency + "-" + str(self.e1) + ":" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
       if(self.alrtSettings.is_alert_settings_matched(currency, ratio)):
          self.notifymessage = self.notifymessage + stringToPrint + "\n" 
          #print stringToPrint
