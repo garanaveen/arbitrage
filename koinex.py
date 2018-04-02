@@ -18,10 +18,11 @@ class koinex(Exchange):
    def __init__(self):
       self.name = "koinex"
       self.native = False
-      cfg.print_quote_type()
+      #cfg.print_quote_type()
 
    def get_rates(self):
       self.price = Price()
+       
       jsonfile = readurl(base_url, ".koinex.json")
 
       usdinrrate = get_exchangerate()
@@ -43,5 +44,4 @@ class koinex(Exchange):
          self.price.ltc = float(jsonfile['prices']['LTC'])/usdinrrate
          self.price.eth = float(jsonfile['prices']['ETH'])/usdinrrate
          self.price.bch = float(jsonfile['prices']['BCH'])/usdinrrate
-
 

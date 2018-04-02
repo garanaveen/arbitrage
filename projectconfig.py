@@ -7,6 +7,7 @@ emailcount = 0
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
+   PLATFORMTYPE = "linux"
    DEVELOPER_MODE=True #This doesn't loop and prints to stdout
    POLLTIME = 1
    #This variable gets the quotes online everytime. Time consuming if True. 
@@ -15,6 +16,7 @@ if sys.platform.startswith('linux'):
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
 else:
+   PLATFORMTYPE = "mac"
    DEVELOPER_MODE = False
    POLLTIME = 30
    LIVEQUOTE = True

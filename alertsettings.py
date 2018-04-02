@@ -38,6 +38,7 @@ class AlertSettings:
       myalert = "dummyline"
       while myalert:
           myalert = f.readline()
+          #TODO : Check for this regex AAA>1 or bbb<2. Ignore otherwise.
           if '>' in myalert:
              transactionType = "sell"
              currency,ratio = myalert.split('>')
