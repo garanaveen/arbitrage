@@ -43,7 +43,7 @@ if __name__ == "__main__":
       except ValueError as valueErr:
          cfg.logger.info("ERROR : ValueError exception occured: {0}".format(valueErr))
 
-         if(cfg.DEVELOPER_MODE):
-            break
-         time.sleep(cfg.POLLTIME)
+      if(cfg.DEVELOPER_MODE):
+         break
+      time.sleep(cfg.POLLTIME)
 
