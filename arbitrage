@@ -34,13 +34,15 @@ def calculate_arbitrage(quoteType):
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
    while True:
-      calculate_arbitrage("highest_bid")
-      cfg.LIVEQUOTE = False
-      calculate_arbitrage("lowest_ask")
-      cfg.LIVEQUOTE = True
-      if(cfg.DEVELOPER_MODE):
-         break
+      try:
+         calculate_arbitrage("highest_bid")
+         cfg.LIVEQUOTE = False
+         calculate_arbitrage("lowest_ask")
+         cfg.LIVEQUOTE = True
+      except ValueError:
+         cfg.logger.info("ERROR : ValueError exception occured.")
 
-      time.sleep(cfg.POLLTIME)
-
+         if(cfg.DEVELOPER_MODE):
+            break
+         time.sleep(cfg.POLLTIME)
 
