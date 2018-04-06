@@ -28,6 +28,7 @@ class CalculateArbitrage:
       stringToPrint =  currency + "-" + str(self.e1) + ":" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
       if(self.alrtSettings.is_alert_settings_matched(currency, ratio)):
          self.notifymessage = self.notifymessage + stringToPrint + "\n" 
+         stringToPrint += " (matches myalerts.ini)"
          #print stringToPrint
       cfg.logger.info(stringToPrint)
       

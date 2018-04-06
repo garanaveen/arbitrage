@@ -42,8 +42,6 @@ class AlertSettings:
           #TODO : Check for this regex AAA>1 or bbb<2. Ignore otherwise.
           p = re.compile('^[ a-zA-Z]{3}[><]-?\d{1,2}$')
           if(p.match(myalert)):
-          
-              print "Did match the regex %s" % myalert
 	      if '>' in myalert:
 		 transactionType = "sell"
 		 currency,ratio = myalert.split('>')
@@ -57,9 +55,6 @@ class AlertSettings:
 	      else:
 		 #ignore this line
 		 continue
-          else:
-             print "Din't match the regex %s" % myalert
-
       f.close()
 
    def print_everything(self):
