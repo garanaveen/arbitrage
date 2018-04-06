@@ -42,19 +42,19 @@ class AlertSettings:
           #TODO : Check for this regex AAA>1 or bbb<2. Ignore otherwise.
           p = re.compile('^[ a-zA-Z]{3}[><]-?\d{1,2}$')
           if(p.match(myalert)):
-	      if '>' in myalert:
-		 transactionType = "sell"
-		 currency,ratio = myalert.split('>')
-		 alert = Alert(currency.lower(), ratio, transactionType)
-		 self.alerts.append(alert)
-	      elif '<' in myalert:
-		 transactionType = "buy"
-		 currency,ratio = myalert.split('<')
-		 alert = Alert(currency.lower(), ratio, transactionType)
-		 self.alerts.append(alert)
-	      else:
-		 #ignore this line
-		 continue
+             if '>' in myalert:
+                transactionType = "sell"
+                currency,ratio = myalert.split('>')
+                alert = Alert(currency.lower(), ratio, transactionType)
+                self.alerts.append(alert)
+             elif '<' in myalert:
+                transactionType = "buy"
+                currency,ratio = myalert.split('<')
+                alert = Alert(currency.lower(), ratio, transactionType)
+                self.alerts.append(alert)
+             else:
+                #ignore this line
+                continue
       f.close()
 
    def print_everything(self):
