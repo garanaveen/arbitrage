@@ -1,0 +1,37 @@
+
+100% [..................................................................................] 158 / 158Traceback (most recent call last):
+  File "./arbitrage", line 39, in <module>
+    calculate_arbitrage("highest_bid")
+  File "./arbitrage", line 24, in calculate_arbitrage
+    koine.get_rates()
+  File "/Users/logmeingn/Documents/GitHub/arbitrage/koinex.py", line 26, in get_rates
+    jsonfile = readurl(base_url, ".koinex.json")
+  File "/Users/logmeingn/Documents/GitHub/arbitrage/utils.py", line 19, in readurl
+    file = wget.download(url,output)
+  File "/usr/local/lib/python2.7/site-packages/wget.py", line 526, in download
+    (tmpfile, headers) = ulib.urlretrieve(binurl, tmpfile, callback)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 98, in urlretrieve
+    return opener.retrieve(url, filename, reporthook, data)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 245, in retrieve
+    fp = self.open(url, data)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 213, in open
+    return getattr(self, name)(url)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 443, in open_https
+    h.endheaders(data)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1038, in endheaders
+    self._send_output(message_body)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 882, in _send_output
+    self.send(msg)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 844, in send
+    self.connect()
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1255, in connect
+    HTTPConnection.connect(self)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 821, in connect
+    self.timeout, self.source_address)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 557, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+IOError: [Errno socket error] [Errno 8] nodename nor servname provided, or not known
+
+
+
+--------------------------------------------------------------------------------------------------------------------------

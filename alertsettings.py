@@ -5,6 +5,7 @@ import shutil
 import wget
 import os
 import projectconfig as cfg
+import re
 
 
 FILE_NAME = "myalerts.ini"
@@ -39,19 +40,25 @@ class AlertSettings:
       while myalert:
           myalert = f.readline()
           #TODO : Check for this regex AAA>1 or bbb<2. Ignore otherwise.
-          if '>' in myalert:
-             transactionType = "sell"
-             currency,ratio = myalert.split('>')
-             alert = Alert(currency.lower(), ratio, transactionType)
-             self.alerts.append(alert)
-          elif '<' in myalert:
-             transactionType = "buy"
-             currency,ratio = myalert.split('<')
-             alert = Alert(currency.lower(), ratio, transactionType)
-             self.alerts.append(alert)
+          p = re.compile('^[ a-zA-Z]{3}[><]-?\d{1,2}$')
+          if(p.match(myalert)):
+          
+              print "Did match the regex %s" % myalert
+	      if '>' in myalert:
+		 transactionType = "sell"
+		 currency,ratio = myalert.split('>')
+		 alert = Alert(currency.lower(), ratio, transactionType)
+		 self.alerts.append(alert)
+	      elif '<' in myalert:
+		 transactionType = "buy"
+		 currency,ratio = myalert.split('<')
+		 alert = Alert(currency.lower(), ratio, transactionType)
+		 self.alerts.append(alert)
+	      else:
+		 #ignore this line
+		 continue
           else:
-             #ignore this line
-             continue
+             print "Din't match the regex %s" % myalert
 
       f.close()
 
