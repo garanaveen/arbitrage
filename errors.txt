@@ -35,3 +35,27 @@ IOError: [Errno socket error] [Errno 8] nodename nor servname provided, or not k
 
 
 --------------------------------------------------------------------------------------------------------------------------
+
+100% [..................................................................................] 157 / 157Traceback (most recent call last):
+  File "./arbitrage", line 39, in <module>
+    calculate_arbitrage("highest_bid")
+  File "./arbitrage", line 19, in calculate_arbitrage
+    gex.get_rates()
+  File "/Users/logmeingn/Documents/GitHub/arbitrage/gdax.py", line 23, in get_rates
+    self.price.ltc = self.get_price("LTC")
+  File "/Users/logmeingn/Documents/GitHub/arbitrage/gdax.py", line 30, in get_price
+    jsonfile = readurl(url, cache_file_name)
+  File "/Users/logmeingn/Documents/GitHub/arbitrage/utils.py", line 19, in readurl
+    file = wget.download(url,output)
+  File "/usr/local/lib/python2.7/site-packages/wget.py", line 526, in download
+    (tmpfile, headers) = ulib.urlretrieve(binurl, tmpfile, callback)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 98, in urlretrieve
+    return opener.retrieve(url, filename, reporthook, data)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 245, in retrieve
+    fp = self.open(url, data)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 213, in open
+    return getattr(self, name)(url)
+  File "/usr/local/Cellar/python@2/2.7.14_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 450, in open_https
+    'got a bad status line', None)
+IOError: ('http protocol error', 0, 'got a bad status line', None)
+
