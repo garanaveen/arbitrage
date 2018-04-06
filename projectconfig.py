@@ -25,7 +25,7 @@ else:
    
 print ("sys.platform : " + sys.platform)
 
-LOG_TO_STDOUT=True
+LOG_TO_STDOUT=False
 #QUOTETYPE = "lasttraded"
 
 #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)
