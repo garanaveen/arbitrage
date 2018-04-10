@@ -9,7 +9,7 @@ import re
 
 
 FILE_NAME = "myalerts.ini"
-VERBOSE = True
+VERBOSE = False
 
 class Alert:
    currency = 'cur'
@@ -75,7 +75,7 @@ class AlertSettings:
                 #ignore this line
                 continue
           else:
-             print "myalert : " + myalert
+             print "myalert didn't match regex : " + myalert
 
 
       if VERBOSE:
