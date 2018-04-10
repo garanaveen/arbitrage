@@ -9,6 +9,7 @@ import re
 
 
 FILE_NAME = "myalerts.ini"
+VERBOSE = True
 
 class Alert:
    currency = 'cur'
@@ -42,6 +43,10 @@ class AlertSettings:
          tool_tip = "buy if ratio is less than %s" % ratio
       elif transaction_type == "sell":
          tool_tip = "sell if ratio is greater than %s" % ratio
+
+      if VERBOSE:
+         print "tool_tip : " + currency + " : " + tool_tip
+
       return tool_tip.rstrip()
          
       #Print sell buy suggestion
@@ -50,7 +55,7 @@ class AlertSettings:
       myalert = "dummyline"
       while myalert:
           myalert = f.readline()
-          p = re.compile('^[ a-zA-Z]{3}[><]-?\d+\.?\d+?$')
+          p = re.compile('^[a-zA-Z]{3}[><]-?([0-9]+(?:\.[0-9]+)?)')
           if(p.match(myalert)):
              if '>' in myalert:
                 transactionType = "sell"
@@ -69,11 +74,20 @@ class AlertSettings:
              else:
                 #ignore this line
                 continue
+          else:
+             print "myalert : " + myalert
+
+
+      if VERBOSE:
+         self.print_everything()
       f.close()
 
    def print_everything(self):
-      for a in self.alerts[:]:
-         print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
+      if len(self.alerts) > 0:
+         for a in self.alerts[:]:
+            print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
+      else:
+         print "alerts list is empty"
    def is_currency_same(self, alertcurrency, currentcurrency):
       retVal = (alertcurrency == currentcurrency) or (alertcurrency == "all")
       #print "alertcurrency : " + alertcurrency + ", currentcurrency : " + currentcurrency + ", retVal : " + str(retVal)
