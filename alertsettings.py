@@ -74,7 +74,7 @@ class AlertSettings:
              else:
                 #ignore this line
                 continue
-          else:
+          elif VERBOSE:
              print "myalert didn't match regex : " + myalert
 
 
