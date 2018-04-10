@@ -95,12 +95,13 @@ class AlertSettings:
 
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
-   print "QUOTETYPE : " + cfg.get_transaction_type()
+   transaction_type = cfg.get_transaction_type()
+   print "QUOTETYPE : " + transaction_type
    matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -4.5)
    if (matched):
-      print "ltc < -4.5 matched"
+      print "ltc " + transaction_type + " ratio : -4.5 matched"
    else:
-      print "NOT : ltc < -4.5 didn't match"
+      print "ltc " + transaction_type + " ratio : -4.5 NOT matched"
 
    matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -14.5)
    if (matched):
