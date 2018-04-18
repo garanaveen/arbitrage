@@ -12,6 +12,8 @@ Implement parse_args with the following options,
 
 
 
+print nativePrice too for foriegn exchanges.
+
 Packaging of this so that it can be easily installed and the program can be executed with a command (say "arbitrage")
 Example of command,
 arbitrage --exchange gdax --exchange koinex --loop --freqency 1m --notify nriarbitrage@gmail.com --verbose
