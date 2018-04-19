@@ -35,7 +35,7 @@ print ("sys.platform : " + sys.platform)
 #QUOTETYPE = "lowest_ask"
 
 #DEVELOPER_MODE=False
-#LIVEQUOTE = True
+LIVEQUOTE = True
 
 
 logger = logging.getLogger('arbitrage')
