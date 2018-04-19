@@ -29,19 +29,31 @@ class koinex(Exchange):
 
       #If True get the price that people are willing to buy. Else get the last trade price.
       if cfg.QUOTETYPE == "highest_bid":
-         self.price.btc = float(jsonfile['stats']['BTC']['highest_bid'])/usdinrrate
-         self.price.ltc = float(jsonfile['stats']['LTC']['highest_bid'])/usdinrrate
-         self.price.eth = float(jsonfile['stats']['ETH']['highest_bid'])/usdinrrate
-         self.price.bch = float(jsonfile['stats']['BCH']['highest_bid'])/usdinrrate
+         self.nativePrice.btc = float(jsonfile['stats']['BTC']['highest_bid'])
+         self.nativePrice.ltc = float(jsonfile['stats']['LTC']['highest_bid'])
+         self.nativePrice.eth = float(jsonfile['stats']['ETH']['highest_bid'])
+         self.nativePrice.bch = float(jsonfile['stats']['BCH']['highest_bid'])
+         self.price.btc = self.nativePrice.btc/usdinrrate
+         self.price.ltc = self.nativePrice.ltc/usdinrrate
+         self.price.eth = self.nativePrice.eth/usdinrrate
+         self.price.bch = self.nativePrice.bch/usdinrrate
       elif cfg.QUOTETYPE == "lowest_ask":
-
-         self.price.btc = float(jsonfile['stats']['BTC']['lowest_ask'])/usdinrrate
-         self.price.ltc = float(jsonfile['stats']['LTC']['lowest_ask'])/usdinrrate
-         self.price.eth = float(jsonfile['stats']['ETH']['lowest_ask'])/usdinrrate
-         self.price.bch = float(jsonfile['stats']['BCH']['lowest_ask'])/usdinrrate
+         self.nativePrice.btc = float(jsonfile['stats']['BTC']['lowest_ask'])
+         self.nativePrice.ltc = float(jsonfile['stats']['LTC']['lowest_ask'])
+         self.nativePrice.eth = float(jsonfile['stats']['ETH']['lowest_ask'])
+         self.nativePrice.bch = float(jsonfile['stats']['BCH']['lowest_ask'])
+         self.price.btc = self.nativePrice.btc/usdinrrate
+         self.price.ltc = self.nativePrice.ltc/usdinrrate
+         self.price.eth = self.nativePrice.eth/usdinrrate
+         self.price.bch = self.nativePrice.bch/usdinrrate
       else:
-         self.price.btc = float(jsonfile['prices']['BTC'])/usdinrrate
-         self.price.ltc = float(jsonfile['prices']['LTC'])/usdinrrate
-         self.price.eth = float(jsonfile['prices']['ETH'])/usdinrrate
-         self.price.bch = float(jsonfile['prices']['BCH'])/usdinrrate
+         self.nativePrice.btc = float(jsonfile['prices']['BTC'])
+         self.nativePrice.ltc = float(jsonfile['prices']['LTC'])
+         self.nativePrice.eth = float(jsonfile['prices']['ETH'])
+         self.nativePrice.bch = float(jsonfile['prices']['BCH'])
+         self.price.btc = self.nativePrice.btc/usdinrrate
+         self.price.ltc = self.nativePrice.ltc/usdinrrate
+         self.price.eth = self.nativePrice.eth/usdinrrate
+         self.price.bch = self.nativePrice.bch/usdinrrate
+
 

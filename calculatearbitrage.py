@@ -17,15 +17,15 @@ class CalculateArbitrage:
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")
-      self.calculate_arbitrage("btc", self.e1.price.btc, self.e2.price.btc)
-      self.calculate_arbitrage("ltc", self.e1.price.ltc, self.e2.price.ltc)
-      self.calculate_arbitrage("eth", self.e1.price.eth, self.e2.price.eth)
-      self.calculate_arbitrage("bch", self.e1.price.bch, self.e2.price.bch)
+      self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
+      self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
+      self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
+      self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
       ntf.notifyviaemail(self.notifymessage)
 
-   def calculate_arbitrage(self, currency, p1, p2):
+   def calculate_arbitrage(self, currency, np1, p1, p2):
       ratio = (p1-p2)*100/p2
-      stringToPrint =  currency + "-" + str(self.e1) + ":" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
+      stringToPrint =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "):" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
       (is_matched, trade_tip) = self.alrtSettings.is_alert_settings_matched(currency, ratio)
       if(is_matched):
          self.notifymessage = self.notifymessage + stringToPrint + "\n" 
@@ -44,5 +44,4 @@ def match_notify_conditions(ratio):
       retVal = True
 
    return retVal
-   
-   
+

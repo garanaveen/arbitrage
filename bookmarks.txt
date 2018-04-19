@@ -10,3 +10,7 @@ https://console.starter-us-west-2.openshift.com/console/project/firsttestng/over
 
 Sending an email from python,
 https://medium.freecodecamp.org/send-emails-using-code-4fcea9df63f
+
+
+Storing text online and retriving for myalerts.ini
+https://stackoverflow.com/questions/26089406/is-there-anywhere-i-can-store-and-access-easily-with-python-a-text-file-online
