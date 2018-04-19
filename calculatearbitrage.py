@@ -13,6 +13,7 @@ class CalculateArbitrage:
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
+      self.notifysubject = ""
       self.notifymessage = ""
    
    def printarbitrage(self):
@@ -26,11 +27,15 @@ class CalculateArbitrage:
    def calculate_arbitrage(self, currency, np1, p1, p2):
       ratio = (p1-p2)*100/p2
       stringToPrint =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "):" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
+      stringToEmail =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "), ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
       (is_matched, trade_tip) = self.alrtSettings.is_alert_settings_matched(currency, ratio)
       if(is_matched):
-         self.notifymessage = self.notifymessage + stringToPrint + "\n" 
-         stringToPrint += " (TradeTip : " + trade_tip + ")"
-         stringToPrint += " (MATCHES myalerts.ini)"
+         appendExtraInfo = " (TradeTip : " + trade_tip + ")"
+         appendExtraInfo = " (MATCHES myalerts.ini)"
+         stringToPrint += appendExtraInfo
+         stringToEmail += appendExtraInfo
+         stringToEmailSubject = currency + ":" + ratio + "%"
+         self.notifymessage += 'Subject: {}\n\n{}'.format(stringToEmailSubject, stringToEmail)
          #print stringToPrint
       cfg.logger.info(stringToPrint)
       
