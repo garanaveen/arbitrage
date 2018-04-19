@@ -12,6 +12,7 @@ import projectconfig as cfg
 
 
 import time
+import sys
 
 def calculate_arbitrage(quoteType):
     cfg.QUOTETYPE = quoteType
@@ -43,7 +44,8 @@ if __name__ == "__main__":
       except ValueError as valueErr:
          cfg.logger.info("ERROR : ValueError exception occured: {0}".format(valueErr))
       except:
-         cfg.logger.info("ERROR : Unknown exception")
+         cfg.logger.info("ERROR : Unknown exception : %s, %s, %s" % (sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
+         
 
       if(cfg.DEVELOPER_MODE):
          break
