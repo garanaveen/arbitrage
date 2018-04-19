@@ -21,7 +21,7 @@ def checkforpricefluctuations(exchange):
  
 
 
-def notifyviaemail(message):
+def notifyviaemail(subject, message):
    print message
    if message and  cfg.DEVELOPER_MODE == False and cfg.emailcount < 20:
       cfg.emailcount = cfg.emailcount + 1
@@ -29,12 +29,12 @@ def notifyviaemail(message):
       server = smtplib.SMTP('smtp.gmail.com:587')
       server.starttls()
       server.login(USERNAME, PASSWORD)
-      problems = server.sendmail(USERNAME, to_addr_list, message)
+
+      emailmessage = 'Subject: {}\n\n{}'.format(subject, message)
+      problems = server.sendmail(USERNAME, to_addr_list, emailmessage)
       server.quit()
 
 
-
 if __name__ == "__main__":
-   emailmessage = 'Subject: {}\n\n{}'.format("This is subject", "This is message body")
-   notifyviaemail(emailmessage)
+   notifyviaemail("This is subject", "This is email main body")
 
