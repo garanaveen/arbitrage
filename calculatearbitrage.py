@@ -2,6 +2,7 @@
 
 from exchange import Exchange
 from alertsettings import AlertSettings
+from exchangerate import get_exchangerate
 import  notify as ntf
 import projectconfig as cfg
 import logging
@@ -18,6 +19,8 @@ class CalculateArbitrage:
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")
+      exchangeRate = "Exchange rate : " + str(get_exchangerate())
+      cfg.logger.info(exchangeRate)
       self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
       self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
       self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
