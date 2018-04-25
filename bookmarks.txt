@@ -14,3 +14,7 @@ https://medium.freecodecamp.org/send-emails-using-code-4fcea9df63f
 
 Storing text online and retriving for myalerts.ini
 https://stackoverflow.com/questions/26089406/is-there-anywhere-i-can-store-and-access-easily-with-python-a-text-file-online
+
+Is it possible to get the livequotes of all the exchanges in general from livecoinwatch api?
+https://www.livecoin.net/api/examples
+
