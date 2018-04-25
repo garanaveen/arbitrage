@@ -18,3 +18,11 @@ https://stackoverflow.com/questions/26089406/is-there-anywhere-i-can-store-and-a
 Is it possible to get the livequotes of all the exchanges in general from livecoinwatch api?
 https://www.livecoin.net/api/examples
 
+
+Possibilities of getting an exchange rate,
+https://stackoverflow.com/questions/3139879/how-do-i-get-currency-exchange-rates-via-an-api-such-as-google-finance?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+Possibilities to generate vanity address,
+You can also use https://bitcoinvanity.appspot.com All done for you on their website and nothing to install. Is secure as they never know the private key - see help on site for how this is possible!
+
+
