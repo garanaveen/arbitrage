@@ -26,22 +26,21 @@ class koinex(Exchange):
       jsonfile = readurl(base_url, ".koinex.json")
 
       usdinrrate = get_exchangerate()
-
       #If True get the price that people are willing to buy. Else get the last trade price.
       if cfg.QUOTETYPE == "highest_bid":
-         self.nativePrice.btc = float(jsonfile['stats']['BTC']['highest_bid'])
-         self.nativePrice.ltc = float(jsonfile['stats']['LTC']['highest_bid'])
-         self.nativePrice.eth = float(jsonfile['stats']['ETH']['highest_bid'])
-         self.nativePrice.bch = float(jsonfile['stats']['BCH']['highest_bid'])
+         self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['highest_bid'])
+         self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['highest_bid'])
+         self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['highest_bid'])
+         self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['highest_bid'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
       elif cfg.QUOTETYPE == "lowest_ask":
-         self.nativePrice.btc = float(jsonfile['stats']['BTC']['lowest_ask'])
-         self.nativePrice.ltc = float(jsonfile['stats']['LTC']['lowest_ask'])
-         self.nativePrice.eth = float(jsonfile['stats']['ETH']['lowest_ask'])
-         self.nativePrice.bch = float(jsonfile['stats']['BCH']['lowest_ask'])
+         self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['lowest_ask'])
+         self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['lowest_ask'])
+         self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['lowest_ask'])
+         self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['lowest_ask'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
@@ -57,3 +56,6 @@ class koinex(Exchange):
          self.price.bch = self.nativePrice.bch/usdinrrate
 
 
+
+if __name__ == "__main__":
+   pass

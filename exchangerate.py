@@ -7,7 +7,9 @@ import projectconfig as cfg
 url="http://data.fixer.io/api/latest?access_key=075191d834b8ceef6b09ea55dfa4b127"
 
 def is_correct_frequency():
-   return cfg.ITERATION % cfg.EXCHANGERATE_FREQUENCY == 0
+   correct_frequency = cfg.EXCHANGERATE_ITERATION % cfg.EXCHANGERATE_FREQUENCY == 0
+   cfg.EXCHANGERATE_ITERATION += 1
+   return correct_frequency
 
 def is_correct_platform():
    #Linux platform has some trouble doing a wget on this url. If its linux, then execute this command and then run "./arbitrage".
@@ -20,9 +22,6 @@ def get_usdinr():
       inr = float(jsonfile['rates']['INR'])
       usd = float(jsonfile['rates']['USD'])
       exchangerate = inr/usd
-      print "inr :" + str(inr)
-      print "usd :" + str(usd)
-      print "exchangerate :" + str(exchangerate)
       return exchangerate
 
 def get_exchangerate():
