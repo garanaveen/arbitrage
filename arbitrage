@@ -50,4 +50,5 @@ if __name__ == "__main__":
       if(cfg.DEVELOPER_MODE):
          break
       time.sleep(cfg.POLLTIME)
+      cfg.ITERATION += 1
 

@@ -28,9 +28,11 @@ class CalculateArbitrage:
       ntf.notifyviaemail(self.notifysubject, self.notifymessage)
 
    def calculate_arbitrage(self, currency, np1, p1, p2):
+      diff = p1-p2
       ratio = (p1-p2)*100/p2
-      stringToPrint =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "):" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
+      stringToPrint =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "):" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + ", ratio:" + str(round(ratio, 2)) + " : Diff(" + str(round(diff, 2)) + ")" + cfg.get_transaction_type()
       stringToEmail =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "), ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
+      stringToEmail += "\n" + stringToPrint
       (is_matched, trade_tip) = self.alrtSettings.is_alert_settings_matched(currency, ratio)
       if(is_matched):
          appendExtraInfo = " (TradeTip : " + trade_tip + ")"

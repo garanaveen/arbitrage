@@ -9,6 +9,7 @@ Implement parse_args with the following options,
 --loop --noloop
 --frequency (How frequently do you want to poll for new quotes - examples : 30s, 1m, 2m, 1h, 6h, 12h, 1d)
 --currency ltc (Show results only for LTC coin)
+--exchangerate (If this parameter is given then don't download the .exchangerate.json)
 
 
 
