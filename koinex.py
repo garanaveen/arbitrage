@@ -26,7 +26,8 @@ class koinex(Exchange):
       jsonfile = readurl(base_url, ".koinex.json")
 
       usdinrrate = get_exchangerate()
-      #If True get the price that people are willing to buy. Else get the last trade price.
+
+      #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)
       if cfg.QUOTETYPE == "highest_bid":
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['highest_bid'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['highest_bid'])
@@ -46,10 +47,10 @@ class koinex(Exchange):
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
       else:
-         self.nativePrice.btc = float(jsonfile['prices']['BTC'])
-         self.nativePrice.ltc = float(jsonfile['prices']['LTC'])
-         self.nativePrice.eth = float(jsonfile['prices']['ETH'])
-         self.nativePrice.bch = float(jsonfile['prices']['BCH'])
+         self.nativePrice.btc = float(jsonfile['prices']['inr']['BTC'])
+         self.nativePrice.ltc = float(jsonfile['prices']['inr']['LTC'])
+         self.nativePrice.eth = float(jsonfile['prices']['inr']['ETH'])
+         self.nativePrice.bch = float(jsonfile['prices']['inr']['BCH'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
@@ -58,4 +59,7 @@ class koinex(Exchange):
 
 
 if __name__ == "__main__":
-   pass
+   cfg.LIVEQUOTE = False
+   jsonfile = readurl(base_url, ".koinex.json")
+   btcLastTradedPrice = float(jsonfile['prices']['inr']['BTC'])
+   print "btcLastTradedPrice : " + str(btcLastTradedPrice)
