@@ -6,7 +6,7 @@ import sys
 emailcount = 0
 ITERATION = 0
 EXCHANGERATE_ITERATION = 0
-EXCHANGERATE_FREQUENCY = 100
+EXCHANGERATE_FREQUENCY = 2000
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
