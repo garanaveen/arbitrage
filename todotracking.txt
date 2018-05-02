@@ -21,3 +21,6 @@ arbitrage --exchange gdax --exchange koinex --loop --freqency 1m --notify nriarb
 
 Do exception handling (there is a possiblity of a exception when the downloaded .json files are incorrect due to connectivity issues.)
 
+
+Currently working on,
+Parse currentassets.ini
