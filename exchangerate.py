@@ -29,7 +29,6 @@ def get_usdinr():
 
 def get_exchangerate():
    if is_correct_frequency() and is_correct_platform():
-      print "Getting live exchange rate"
       exchangerate = get_usdinr()
    else:
       print "Not getting live exchange rate"
