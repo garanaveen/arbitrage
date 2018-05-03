@@ -2,9 +2,12 @@
 
 from utils import readurl
 import projectconfig as cfg
+from exchangerateapikey import EXCHANGERATE_URL
+
 
 #url="https://api.fixer.io/latest?base=USD"
-url="http://data.fixer.io/api/latest?access_key=075191d834b8ceef6b09ea55dfa4b127"
+#Create an account and replace the following url with your access_key.
+#EXCHANGERATE_URL="http://data.fixer.io/api/latest?access_key=075191d834b8ceef6b09ea55dfa4b127"
 
 def is_correct_frequency():
    correct_frequency = cfg.EXCHANGERATE_ITERATION % cfg.EXCHANGERATE_FREQUENCY == 0
@@ -18,7 +21,7 @@ def is_correct_platform():
    return True
 
 def get_usdinr():
-      jsonfile = readurl(url, ".exchangerate.json")
+      jsonfile = readurl(EXCHANGERATE_URL, ".exchangerate.json")
       inr = float(jsonfile['rates']['INR'])
       usd = float(jsonfile['rates']['USD'])
       exchangerate = inr/usd
