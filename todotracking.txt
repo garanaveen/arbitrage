@@ -3,6 +3,7 @@ Add lowest_ask price for koinex
 Enums for currencies (viz. LTC, ETH, BTC, BCH)
 
 Implement parse_args with the following options,
+https://docs.python.org/2/library/argparse.html
 --verbose
 --exchange (default to gdax-usa and koinex-india)
 --notify (accept list of emails to be notified?)
