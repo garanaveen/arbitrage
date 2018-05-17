@@ -30,6 +30,6 @@ class Exchange:
    
    def store_rates(self):
       pass
-      #print "TODO : store_rates to the PriceHistory.db"
+      #print ("TODO : store_rates to the PriceHistory.db")
       #TODO : open PriceHistory.db and store the price
 

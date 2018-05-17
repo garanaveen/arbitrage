@@ -45,7 +45,7 @@ class AlertSettings:
          tool_tip = "sell if ratio is greater than %s" % ratio
 
       if VERBOSE:
-         print "tool_tip : " + currency + " : " + tool_tip
+         print ("tool_tip : " + currency + " : " + tool_tip)
 
       return tool_tip.rstrip()
          
@@ -75,7 +75,7 @@ class AlertSettings:
                 #ignore this line
                 continue
           elif VERBOSE:
-             print "myalert didn't match regex : " + myalert
+             print ("myalert didn't match regex : " + myalert)
 
 
       if VERBOSE:
@@ -85,19 +85,19 @@ class AlertSettings:
    def print_everything(self):
       if len(self.alerts) > 0:
          for a in self.alerts[:]:
-            print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
+            print ("currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio))
       else:
-         print "alerts list is empty"
+         print ("alerts list is empty")
    def is_currency_same(self, alertcurrency, currentcurrency):
       retVal = (alertcurrency == currentcurrency) or (alertcurrency == "all")
-      #print "alertcurrency : " + alertcurrency + ", currentcurrency : " + currentcurrency + ", retVal : " + str(retVal)
+      #print ("alertcurrency : " + alertcurrency + ", currentcurrency : " + currentcurrency + ", retVal : " + str(retVal))
       return retVal
 
    def is_alert_settings_matched(self, currency, ratio):
       matched = False
       tool_tip = "Empty tool tip"
       for a in self.alerts[:]:
-         #print "currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio)
+         #print ("currency : " + a.currency.lower() + ", transactionType : " + a.transaction_type + ", ratio : " + str(a.ratio))
          if self.is_currency_same(a.currency, currency) and a.transaction_type == cfg.get_transaction_type():
             if(cfg.get_transaction_type() == "sell") and (ratio > a.ratio):
                   matched = True
@@ -110,15 +110,15 @@ class AlertSettings:
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
    transaction_type = cfg.get_transaction_type()
-   print "QUOTETYPE : " + transaction_type
+   print ("QUOTETYPE : " + transaction_type)
    matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -4.5)
    if (matched):
-      print "ltc " + transaction_type + " ratio : -4.5 matched"
+      print ("ltc " + transaction_type + " ratio : -4.5 matched")
    else:
-      print "ltc " + transaction_type + " ratio : -4.5 NOT matched"
+      print ("ltc " + transaction_type + " ratio : -4.5 NOT matched")
 
    matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -14.5)
    if (matched):
-      print "ltc < -14.5 matched"
+      print ("ltc < -14.5 matched")
    else:
-      print "NOT : ltc < -14.5 didn't match"
+      print ("NOT : ltc < -14.5 didn't match")
