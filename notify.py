@@ -13,7 +13,7 @@ import projectconfig as cfg
 
 def checkforpricefluctuations(exchange):
    pass
-   #print "In checkforpricefluctuations"
+   #print ("In checkforpricefluctuations")
    # 1% in a span of 2 minutes is consider big.
    # 2% in a span of 5 minutes is consider big.
    # 3% in a span of 30 minutes is consider big.
@@ -22,7 +22,7 @@ def checkforpricefluctuations(exchange):
 
 
 def notifyviaemail(subject, message):
-   print message
+   #print message
    if message and  cfg.DEVELOPER_MODE == False and cfg.emailcount < 50:
       cfg.emailcount = cfg.emailcount + 1
       to_addr_list = TOADDRESSLIST

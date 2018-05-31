@@ -24,9 +24,9 @@ class ExchangeAssets:
       self.assetList.append(asset)
    
    def PrintAssets(self):
-      print "Holdings on " + self.name + ","
+      print ("Holdings on " + self.name + ",")
       for asset in self.assetList:
-         print asset.currency, asset.holdings
+         print (asset.currency, asset.holdings)
    
 class CurrentAssets:
    def __init__(self):

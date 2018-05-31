@@ -29,7 +29,7 @@ def get_usdinr():
 
 def get_exchangerate():
    if is_correct_frequency() and is_correct_platform():
-      print "Getting live exchange rate"
+      print ("Getting live exchange rate")
       exchangerate = get_usdinr()
    else:
       liveQuoteOriginalValue = cfg.LIVEQUOTE
@@ -41,5 +41,5 @@ def get_exchangerate():
 
 if __name__ == "__main__":
    rate = get_exchangerate()
-   print "rate : " + str(rate)
+   print ("rate : " + str(rate))
 

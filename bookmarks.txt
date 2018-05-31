@@ -25,4 +25,6 @@ https://stackoverflow.com/questions/3139879/how-do-i-get-currency-exchange-rates
 Possibilities to generate vanity address,
 You can also use https://bitcoinvanity.appspot.com All done for you on their website and nothing to install. Is secure as they never know the private key - see help on site for how this is possible!
 
+Live python simulator,
+http://www.pythontutor.com/live.html#mode=edit
 
