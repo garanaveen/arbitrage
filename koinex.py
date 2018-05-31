@@ -62,4 +62,4 @@ if __name__ == "__main__":
    cfg.LIVEQUOTE = False
    jsonfile = readurl(base_url, ".koinex.json")
    btcLastTradedPrice = float(jsonfile['prices']['inr']['BTC'])
-   print "btcLastTradedPrice : " + str(btcLastTradedPrice)
+   print ("btcLastTradedPrice : " + str(btcLastTradedPrice))
