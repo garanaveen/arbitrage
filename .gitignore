@@ -4,3 +4,4 @@ emailcredentials.py
 *.db
 history_arbitrage.log
 .currentassets.ini
+exchangerateapikey.py
