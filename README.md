@@ -3,11 +3,13 @@
 This is a python script to calculate the price diffence for coins between gdax and koinex exchange.
 You can set alerts to send an email when the price diffence crosses the limits you set in myalerts.ini
 
+
 How to use the script,
 
 clone the repo and run being inside arbitrage directory
+cp emailcredentialstemplate.py emailcredentials.py (update the contents in emailcredentials.py only if you want email notification. emailcredentials.py is in .gitignore, so it isn't a part of repo and is supposed to reside just in your local directory. Preferably create a new gmail account just for this purpose.)
+Run ./arbitrage
 
-./arbitrage
 
 ----------------------------------------------------------------
 Python packages that are needed for running the python script,
