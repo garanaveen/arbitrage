@@ -1,24 +1,16 @@
 # arbitrage
 
+This is a python script to calculate the price diffence for coins between gdax and koinex exchange.
+You can set alerts to send an email when the price diffence crosses the limits you set in myalerts.ini
+
 How to use the script,
+clone the repo and run being inside arbitrage directory
+./arbitrage
 
-Run ./arbitrage
-
-To run it every 30 seconds change the main.py to uncomment while loop and sleep(30)
-
-Packages needed for running the python script,
-wget -  ( probably needs to be installed )
+Python packages that are needed for running the python script,
+wget -  ( probably needs to be installed using pip installer for python)
 
 Numbers are logged in to history_arbitrage.log
 
 Nothing is stored in database. Currently everything is logged in to history_arbitrage.log
-
-----------------
-arbitrage.sh used for quick changes. Not the part of python project
-
-
-OpenShift (An alternative to AWS?)
-https://github.com/sclorg/django-ex
-https://console.starter-us-west-2.openshift.com/console/project/firsttestng/overview
-
 
