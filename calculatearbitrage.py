@@ -25,7 +25,8 @@ class CalculateArbitrage:
       self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
       self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
       self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
-      ntf.notifyviaemail(self.notifysubject, self.notifymessage)
+      if cfg.EMAIL_NOTIFY:
+         ntf.notifyviaemail(self.notifysubject, self.notifymessage)
 
    def calculate_arbitrage(self, currency, np1, p1, p2):
       diff = p1-p2

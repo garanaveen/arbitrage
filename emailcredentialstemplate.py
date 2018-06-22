@@ -1,5 +1,5 @@
-USERNAME = 'xxxxxx'
-PASSWORD = ''
-TOADDRESSLIST = ['xxxxxx@gmail.com']
+USERNAME = 'YourGmailUserId'
+PASSWORD = 'YourGmailPassword'
+TOADDRESSLIST = ['tobenotifiedemail@gmail.com']
 
 
