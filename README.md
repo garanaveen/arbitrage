@@ -9,6 +9,7 @@ clone the repo and run being inside arbitrage directory
 
 ./arbitrage
 
+----------------------------------------------------------------
 Python packages that are needed for running the python script,
 wget -  ( probably needs to be installed using pip installer for python)
 
