@@ -4,7 +4,9 @@ This is a python script to calculate the price diffence for coins between gdax a
 You can set alerts to send an email when the price diffence crosses the limits you set in myalerts.ini
 
 How to use the script,
+
 clone the repo and run being inside arbitrage directory
+
 ./arbitrage
 
 Python packages that are needed for running the python script,
