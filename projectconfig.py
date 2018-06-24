@@ -8,6 +8,7 @@ ITERATION = 0
 EXCHANGERATE_ITERATION = 0
 EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
+AWS=False
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
@@ -25,6 +26,14 @@ else:
    POLLTIME = 30
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
+
+if AWS == True:
+   PLATFORM = "aws"
+   LIVEQUOTE = True
+   DEVELOPER_MODE=False
+   LOG_TO_STDOUT=False
+   POLLTIME=10
+   print ("Its AWS platform")
 
    
 print ("sys.platform : " + sys.platform)
