@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import logging
+import platform
 import sys
 
 emailcount = 0
@@ -8,7 +9,6 @@ ITERATION = 0
 EXCHANGERATE_ITERATION = 0
 EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
-AWS=False
 KEEP_LOOPING=True
 
 LOG_TO_STDOUT=True
@@ -31,7 +31,7 @@ else:
    LOG_TO_STDOUT=False
    KEEP_LOOPING = True
 
-if AWS == True:
+if 'aws' in platform.platform():
    PLATFORM = "aws"
    EMAIL_NOTIFY=True
    LIVEQUOTE = True
