@@ -23,7 +23,7 @@ def checkforpricefluctuations(exchange):
 
 def notifyviaemail(subject, message):
    #print message
-   if message and  cfg.DEVELOPER_MODE == False and cfg.emailcount < 50:
+   if message and  cfg.EMAIL_NOTIFY == False and cfg.emailcount < 50:
       cfg.emailcount = cfg.emailcount + 1
       to_addr_list = TOADDRESSLIST
       server = smtplib.SMTP('smtp.gmail.com:587')

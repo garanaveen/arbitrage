@@ -13,6 +13,7 @@ AWS=False
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
    PLATFORMTYPE = "linux"
+   EMAIL_NOTIFY=True
    DEVELOPER_MODE=True #This doesn't loop and prints to stdout
    POLLTIME = 1
    #This variable gets the quotes online everytime. Time consuming if True. 
@@ -29,6 +30,7 @@ else:
 
 if AWS == True:
    PLATFORM = "aws"
+   EMAIL_NOTIFY=True
    LIVEQUOTE = True
    DEVELOPER_MODE=False
    LOG_TO_STDOUT=False
@@ -38,7 +40,7 @@ if AWS == True:
    
 print ("sys.platform : " + sys.platform)
 
-#LOG_TO_STDOUT=False
+LOG_TO_STDOUT=True
 #QUOTETYPE = "lasttraded"
 
 #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)
@@ -47,7 +49,7 @@ print ("sys.platform : " + sys.platform)
 #lowest_ask is your buy price (i.e. someone is ready to sell for that price)
 #QUOTETYPE = "lowest_ask"
 
-#DEVELOPER_MODE=False
+DEVELOPER_MODE=False
 LIVEQUOTE = True
 
 
