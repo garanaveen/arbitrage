@@ -9,24 +9,27 @@ EXCHANGERATE_ITERATION = 0
 EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
 AWS=False
+KEEP_LOOPING=True
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
    PLATFORMTYPE = "linux"
    EMAIL_NOTIFY=True
    DEVELOPER_MODE=True #This doesn't loop and prints to stdout
-   POLLTIME = 1
+   POLLTIME = 30
    #This variable gets the quotes online everytime. Time consuming if True. 
    #Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
    LIVEQUOTE = False
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
+   KEEP_LOOPING = Flase
 else:
    PLATFORMTYPE = "mac"
    DEVELOPER_MODE = False
    POLLTIME = 30
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
+   KEEP_LOOPING = True
 
 if AWS == True:
    PLATFORM = "aws"
@@ -34,13 +37,13 @@ if AWS == True:
    LIVEQUOTE = True
    DEVELOPER_MODE=False
    LOG_TO_STDOUT=False
-   POLLTIME=10
+   POLLTIME=30
+   KEEP_LOOPING = True
    print ("Its AWS platform")
 
    
 print ("sys.platform : " + sys.platform)
 
-LOG_TO_STDOUT=True
 #QUOTETYPE = "lasttraded"
 
 #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)

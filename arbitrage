@@ -34,7 +34,7 @@ def calculate_arbitrage(quoteType):
 
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
-   while True:
+   while cfg.KEEP_LOOPING:
       #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
       try:
          calculate_arbitrage("highest_bid")
