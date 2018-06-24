@@ -38,7 +38,7 @@ if AWS == True:
    DEVELOPER_MODE=False
    LOG_TO_STDOUT=False
    POLLTIME=30
-   KEEP_LOOPING = True
+   KEEP_LOOPING = False
    print ("Its AWS platform")
 
    
