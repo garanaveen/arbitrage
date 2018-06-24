@@ -22,7 +22,7 @@ if sys.platform.startswith('linux'):
    LIVEQUOTE = False
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
-   KEEP_LOOPING = Flase
+   KEEP_LOOPING = False
 else:
    PLATFORMTYPE = "mac"
    DEVELOPER_MODE = False
