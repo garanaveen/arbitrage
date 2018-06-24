@@ -25,3 +25,9 @@ Do exception handling (there is a possiblity of a exception when the downloaded 
 
 Currently working on,
 Parse currentassets.ini
+
+
+aws
+1 - Set PYTHONPATH such that you can run arbitrage from any directory.
+2 - Figure out a way to send email
+3 - Figure out a way to edit myalerts.ini online.
