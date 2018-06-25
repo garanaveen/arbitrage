@@ -22,9 +22,8 @@ arbitrage --exchange gdax --exchange koinex --loop --freqency 1m --notify nriarb
 
 Do exception handling (there is a possiblity of a exception when the downloaded .json files are incorrect due to connectivity issues.)
 
+When json files are downloaded, specify the directory in which they need to be downloaded instead of current directory. If the script is run from home directory, you don't want all those json files in home directory.
 
-Currently working on,
-Parse currentassets.ini
 
 
 aws
