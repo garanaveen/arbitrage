@@ -3,6 +3,7 @@
 import logging
 import platform
 import sys
+import os
 
 emailcount = 0
 ITERATION = 0
@@ -10,6 +11,10 @@ EXCHANGERATE_ITERATION = 0
 EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
 KEEP_LOOPING=True
+
+HOME_DIR=os.environ['HOME']
+FILE_NAME = HOME_DIR + "/" + "myalerts.ini"
+
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
@@ -23,6 +28,7 @@ if sys.platform.startswith('linux'):
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
    KEEP_LOOPING = False
+   FILE_NAME = HOME_DIR + "/tmp/tada/" + "myalerts.ini"
 else:
    PLATFORMTYPE = "mac"
    DEVELOPER_MODE = False
@@ -30,8 +36,9 @@ else:
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
    KEEP_LOOPING = True
+   FILE_NAME = HOME_DIR + "/tmp/tada/" + "myalerts.ini" #TODO : Figure out the right value for mac.
 
-if 'aws' in platform.platform():
+if 'aws' in platform.platform(): #TODO : Make it work on all three platforms with just one if elif else block.
    PLATFORM = "aws"
    EMAIL_NOTIFY=True
    LIVEQUOTE = True
@@ -39,6 +46,7 @@ if 'aws' in platform.platform():
    LOG_TO_STDOUT=False
    POLLTIME=30
    KEEP_LOOPING = False
+   FILE_NAME = HOME_DIR + "/arbitrage/" + "myalerts.ini"
    print ("Its AWS platform")
 
    

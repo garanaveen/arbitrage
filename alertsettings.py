@@ -8,7 +8,7 @@ import projectconfig as cfg
 import re
 
 
-FILE_NAME = "myalerts.ini"
+#FILE_NAME = "myalerts.ini"
 VERBOSE = False
 
 class Alert:
@@ -51,7 +51,7 @@ class AlertSettings:
          
       #Print sell buy suggestion
    def parse_my_alert_settings(self):
-      f = open(FILE_NAME, 'r')
+      f = open(cfg.FILE_NAME, 'r')
       myalert = "dummyline"
       while myalert:
           myalert = f.readline()
