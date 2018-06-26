@@ -36,7 +36,7 @@ else:
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
    KEEP_LOOPING = True
-   FILE_NAME = HOME_DIR + "/tmp/tada/" + "myalerts.ini" #TODO : Figure out the right value for mac.
+   FILE_NAME = HOME_DIR + "/Documents/Github/arbitrage/" + "myalerts.ini"
 
 if 'aws' in platform.platform(): #TODO : Make it work on all three platforms with just one if elif else block.
    PLATFORM = "aws"
