@@ -12,41 +12,41 @@ EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
 KEEP_LOOPING=True
 
+#This variable gets the quotes online everytime. Time consuming if True. 
+#Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
+LIVEQUOTE = True
+
+#This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
+LOG_TO_STDOUT=True
+
 HOME_DIR=os.environ['HOME']
-ROOT_PATH= HOME_DIR + "/arbitrage/"
 
 LOG_TO_STDOUT=True
-if sys.platform.startswith('linux'):
-   PLATFORMTYPE = "linux"
-   EMAIL_NOTIFY=True
-   DEVELOPER_MODE=True #This doesn't loop and prints to stdout
-   POLLTIME = 30
-   #This variable gets the quotes online everytime. Time consuming if True. 
-   #Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
-   LIVEQUOTE = False
-   #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
-   LOG_TO_STDOUT=True
-   KEEP_LOOPING = False
-   ROOT_PATH= HOME_DIR + "/tmp/tada/"
-else:
-   PLATFORMTYPE = "mac"
-   DEVELOPER_MODE = False
-   POLLTIME = 30
-   LIVEQUOTE = True
-   LOG_TO_STDOUT=False
-   KEEP_LOOPING = True
-   ROOT_PATH = HOME_DIR + "/Documents/Github/arbitrage/" 
 
 if 'aws' in platform.platform(): #TODO : Make it work on all three platforms with just one if elif else block.
    PLATFORM = "aws"
    EMAIL_NOTIFY=True
-   LIVEQUOTE = True
-   DEVELOPER_MODE=False
    LOG_TO_STDOUT=False
    POLLTIME=30
-   KEEP_LOOPING = False
+   KEEP_LOOPING = True
+   ROOT_PATH= HOME_DIR + "/arbitrage/"
    print ("Its AWS platform")
 
+elif 'Ubuntu' in platform.platform():
+   PLATFORMTYPE = "linux"
+   EMAIL_NOTIFY=True
+   POLLTIME = 30
+   #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
+   LOG_TO_STDOUT=True
+   KEEP_LOOPING = False
+   ROOT_PATH= HOME_DIR + "/tmp/tada/"
+
+else:
+   PLATFORMTYPE = "mac"
+   POLLTIME = 30
+   LOG_TO_STDOUT=True
+   KEEP_LOOPING = True
+   ROOT_PATH = HOME_DIR + "/Documents/Github/arbitrage/" 
    
 FILE_NAME = ROOT_PATH + "myalerts.ini"
 print ("sys.platform : " + sys.platform)
@@ -58,10 +58,6 @@ print ("sys.platform : " + sys.platform)
 
 #lowest_ask is your buy price (i.e. someone is ready to sell for that price)
 #QUOTETYPE = "lowest_ask"
-
-DEVELOPER_MODE=False
-LIVEQUOTE = True
-
 
 logger = logging.getLogger('arbitrage')
 logger.setLevel(logging.DEBUG)
