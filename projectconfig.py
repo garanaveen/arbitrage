@@ -67,7 +67,8 @@ if LOG_TO_STDOUT:
    fh = logging.StreamHandler(sys.stdout)   
    fh.setFormatter(formatter)
 else:
-   fh = logging.FileHandler('history_arbitrage.log')
+   LOG_FILE = HOME_DIR + "/history_arbitrage.log"
+   fh = logging.FileHandler(LOG_FILE)
    fh.setFormatter(formatter)
 
 logger.addHandler(fh)
