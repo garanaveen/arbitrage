@@ -13,8 +13,7 @@ EMAIL_NOTIFY=True
 KEEP_LOOPING=True
 
 HOME_DIR=os.environ['HOME']
-FILE_NAME = HOME_DIR + "/" + "myalerts.ini"
-
+ROOT_PATH= HOME_DIR + "/arbitrage/"
 
 LOG_TO_STDOUT=True
 if sys.platform.startswith('linux'):
@@ -28,7 +27,7 @@ if sys.platform.startswith('linux'):
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
    KEEP_LOOPING = False
-   FILE_NAME = HOME_DIR + "/tmp/tada/" + "myalerts.ini"
+   ROOT_PATH= HOME_DIR + "/tmp/tada/"
 else:
    PLATFORMTYPE = "mac"
    DEVELOPER_MODE = False
@@ -36,7 +35,7 @@ else:
    LIVEQUOTE = True
    LOG_TO_STDOUT=False
    KEEP_LOOPING = True
-   FILE_NAME = HOME_DIR + "/Documents/Github/arbitrage/" + "myalerts.ini"
+   ROOT_PATH = HOME_DIR + "/Documents/Github/arbitrage/" 
 
 if 'aws' in platform.platform(): #TODO : Make it work on all three platforms with just one if elif else block.
    PLATFORM = "aws"
@@ -46,10 +45,10 @@ if 'aws' in platform.platform(): #TODO : Make it work on all three platforms wit
    LOG_TO_STDOUT=False
    POLLTIME=30
    KEEP_LOOPING = False
-   FILE_NAME = HOME_DIR + "/arbitrage/" + "myalerts.ini"
    print ("Its AWS platform")
 
    
+FILE_NAME = ROOT_PATH + "myalerts.ini"
 print ("sys.platform : " + sys.platform)
 
 #QUOTETYPE = "lasttraded"
