@@ -11,6 +11,20 @@ import re
 #FILE_NAME = "myalerts.ini"
 VERBOSE = False
 
+def get_myalerts_file():
+   #Get the latest myalerts.ini file based on timestamp.
+   local_myalerts_file = cfg.HOME_DIR + "/myalerts.ini"
+   repo_myalerts_file = cfg.ROOT_PATH + "myalerts.ini"
+
+   latest_file = repo_myalerts_file 
+   if (os.path.isfile(local_myalerts_file)) and (os.path.getctime(local_myalerts_file) > os.path.getctime(repo_myalerts_file)) :
+      latest_file = local_myalerts_file
+      #print ("local_myalerts_file : ", local_myalerts_file, "is the latest")
+   #else:
+      #print ("repo_myalerts_file : ", repo_myalerts_file, "is the latest")
+   print ("myalerts_file : ", latest_file)
+   return latest_file
+
 class Alert:
    currency = 'cur'
    ratio = 0
@@ -51,7 +65,8 @@ class AlertSettings:
          
       #Print sell buy suggestion
    def parse_my_alert_settings(self):
-      f = open(cfg.FILE_NAME, 'r')
+      myalerts_file = get_myalerts_file()
+      f = open(myalerts_file, 'r')
       myalert = "dummyline"
       while myalert:
           myalert = f.readline()
@@ -122,3 +137,6 @@ if __name__ == "__main__":
       print ("ltc < -14.5 matched")
    else:
       print ("NOT : ltc < -14.5 didn't match")
+
+
+

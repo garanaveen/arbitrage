@@ -36,6 +36,7 @@ elif 'Ubuntu' in platform.platform():
    PLATFORMTYPE = "linux"
    EMAIL_NOTIFY=True
    POLLTIME = 30
+   LIVEQUOTE = True
    #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
    LOG_TO_STDOUT=True
    KEEP_LOOPING = False
@@ -49,7 +50,7 @@ else:
    ROOT_PATH = HOME_DIR + "/Documents/Github/arbitrage/" 
    
 FILE_NAME = ROOT_PATH + "myalerts.ini"
-print ("sys.platform : " + sys.platform)
+#print ("sys.platform : " + sys.platform)
 
 #QUOTETYPE = "lasttraded"
 
