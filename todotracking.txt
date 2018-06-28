@@ -4,7 +4,6 @@ Enums for currencies (viz. LTC, ETH, BTC, BCH)
 
 Implement parse_args with the following options,
 https://docs.python.org/2/library/argparse.html
---verbose
 --exchange (default to gdax-usa and koinex-india)
 --notify (accept list of emails to be notified?)
 --frequency (How frequently do you want to poll for new quotes - examples : 30s, 1m, 2m, 1h, 6h, 12h, 1d)
@@ -13,6 +12,7 @@ https://docs.python.org/2/library/argparse.html
 
 Done,
 --loop --noloop
+--verbose
 
 print nativePrice too for foriegn exchanges.
 
@@ -24,6 +24,7 @@ Do exception handling (there is a possiblity of a exception when the downloaded 
 
 When json files are downloaded, specify the directory in which they need to be downloaded instead of current directory. If the script is run from home directory, you don't want all those json files in home directory.
 
+Get the live exchange rate (instead of cache) for the next iteration if there is MATCH with myalerts.ini
 
 
 aws
