@@ -7,12 +7,12 @@ https://docs.python.org/2/library/argparse.html
 --verbose
 --exchange (default to gdax-usa and koinex-india)
 --notify (accept list of emails to be notified?)
---loop --noloop
 --frequency (How frequently do you want to poll for new quotes - examples : 30s, 1m, 2m, 1h, 6h, 12h, 1d)
 --currency ltc (Show results only for LTC coin)
 --exchangerate (If this parameter is given then don't download the .exchangerate.json)
 
-
+Done,
+--loop --noloop
 
 print nativePrice too for foriegn exchanges.
 
@@ -28,5 +28,7 @@ When json files are downloaded, specify the directory in which they need to be d
 
 aws
 1 - Set PYTHONPATH such that you can run arbitrage from any directory.
-2 - Figure out a way to send email
+2 - Figure out a way to send email from aws ses,
+https://aws.amazon.com/getting-started/tutorials/send-an-email/
 3 - Figure out a way to edit myalerts.ini online.
+

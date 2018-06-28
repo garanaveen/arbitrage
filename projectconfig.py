@@ -11,6 +11,7 @@ EXCHANGERATE_ITERATION = 0
 EXCHANGERATE_FREQUENCY = 2000
 EMAIL_NOTIFY=True
 KEEP_LOOPING=True
+VERBOSE=False
 
 #This variable gets the quotes online everytime. Time consuming if True. 
 #Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
@@ -23,7 +24,7 @@ HOME_DIR=os.environ['HOME']
 
 LOG_TO_STDOUT=True
 
-if 'aws' in platform.platform(): #TODO : Make it work on all three platforms with just one if elif else block.
+if 'aws' in platform.platform():
    PLATFORM = "aws"
    EMAIL_NOTIFY=True
    LOG_TO_STDOUT=False
@@ -36,8 +37,7 @@ elif 'Ubuntu' in platform.platform():
    PLATFORMTYPE = "linux"
    EMAIL_NOTIFY=True
    POLLTIME = 30
-   LIVEQUOTE = True
-   #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
+   LIVEQUOTE = False
    LOG_TO_STDOUT=True
    KEEP_LOOPING = False
    ROOT_PATH= HOME_DIR + "/tmp/tada/"
@@ -73,9 +73,6 @@ else:
    fh.setFormatter(formatter)
 
 logger.addHandler(fh)
-
-
-   
 
 def print_quote_type():
    transactionType = get_transaction_type()

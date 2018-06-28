@@ -10,6 +10,8 @@ from alertsettings import AlertSettings
 
 import projectconfig as cfg
 
+from argparser import opts
+
 
 import time
 import sys
@@ -34,6 +36,8 @@ def calculate_arbitrage(quoteType):
 
 if __name__ == "__main__":
    alrtSettings = AlertSettings()
+   print ("opts.verbose : ",  opts.verbose)
+
    while True:
       #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
       try:
@@ -47,7 +51,7 @@ if __name__ == "__main__":
          cfg.logger.info("ERROR : Unknown exception : %s, %s, %s" % (sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
          
 
-      if(not cfg.KEEP_LOOPING):
+      if(not opts.loop):
          break
       time.sleep(cfg.POLLTIME)
       cfg.ITERATION += 1
