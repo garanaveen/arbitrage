@@ -6,7 +6,6 @@ from gdax import gdax
 from koinex import koinex
 from exchangerate import get_exchangerate
 from calculatearbitrage import CalculateArbitrage
-from alertsettings import AlertSettings
 
 import projectconfig as cfg
 
@@ -35,7 +34,6 @@ def calculate_arbitrage(quoteType):
 
 
 if __name__ == "__main__":
-   alrtSettings = AlertSettings()
    print ("opts.verbose : ",  opts.verbose)
 
    while True:

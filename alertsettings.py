@@ -13,16 +13,12 @@ VERBOSE = False
 
 def get_myalerts_file():
    #Get the latest myalerts.ini file based on timestamp.
-   local_myalerts_file = cfg.HOME_DIR + "/myalerts.ini"
+   local_myalerts_file = cfg.HOME_DIR + "myalerts.ini"
    repo_myalerts_file = cfg.ROOT_PATH + "myalerts.ini"
 
    latest_file = repo_myalerts_file 
    if (os.path.isfile(local_myalerts_file)) and (os.path.getctime(local_myalerts_file) > os.path.getctime(repo_myalerts_file)) :
       latest_file = local_myalerts_file
-      #print ("local_myalerts_file : ", local_myalerts_file, "is the latest")
-   #else:
-      #print ("repo_myalerts_file : ", repo_myalerts_file, "is the latest")
-   print ("myalerts_file : ", latest_file)
    return latest_file
 
 class Alert:
@@ -44,7 +40,7 @@ class AlertSettings:
    def __init__(self):
       if not AlertSettings.instance:
          AlertSettings.instance = AlertSettings.__AlertSettings()
-         self.parse_my_alert_settings()
+      self.parse_my_alert_settings()
       
    def __getattr__(self):
       return getattr(self.instance)
@@ -123,20 +119,23 @@ class AlertSettings:
       return matched, tool_tip
 
 if __name__ == "__main__":
-   alrtSettings = AlertSettings()
-   transaction_type = cfg.get_transaction_type()
-   print ("QUOTETYPE : " + transaction_type)
-   matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -4.5)
-   if (matched):
-      print ("ltc " + transaction_type + " ratio : -4.5 matched")
-   else:
-      print ("ltc " + transaction_type + " ratio : -4.5 NOT matched")
+#   alrtSettings = AlertSettings()
+#   transaction_type = cfg.get_transaction_type()
+#   print ("QUOTETYPE : " + transaction_type)
+#   matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -4.5)
+#   if (matched):
+#      print ("ltc " + transaction_type + " ratio : -4.5 matched")
+#   else:
+#      print ("ltc " + transaction_type + " ratio : -4.5 NOT matched")
+#
+#   matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -14.5)
+#   if (matched):
+#      print ("ltc < -14.5 matched")
+#   else:
+#      print ("NOT : ltc < -14.5 didn't match")
+#
 
-   matched, toop_tip = alrtSettings.is_alert_settings_matched('ltc', -14.5)
-   if (matched):
-      print ("ltc < -14.5 matched")
-   else:
-      print ("NOT : ltc < -14.5 didn't match")
+   print ("myalerts.ini file : ",  get_myalerts_file())
 
 
 

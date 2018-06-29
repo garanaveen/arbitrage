@@ -24,6 +24,7 @@ Do exception handling (there is a possiblity of a exception when the downloaded 
 
 When json files are downloaded, specify the directory in which they need to be downloaded instead of current directory. If the script is run from home directory, you don't want all those json files in home directory.
 
+Replace VERBOSE with opts.verbose
 
 
 aws
@@ -31,4 +32,5 @@ aws
 2 - Figure out a way to send email from aws ses,
 https://aws.amazon.com/getting-started/tutorials/send-an-email/
 3 - Figure out a way to edit myalerts.ini online.
+
 

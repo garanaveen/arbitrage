@@ -20,7 +20,7 @@ LIVEQUOTE = True
 #This variable controls whether or not the results should be printed on stdout or history_arbitrage.log file.
 LOG_TO_STDOUT=True
 
-HOME_DIR=os.environ['HOME']
+HOME_DIR=os.environ['HOME'] + "/"
 
 LOG_TO_STDOUT=True
 
@@ -30,7 +30,7 @@ if 'aws' in platform.platform():
    LOG_TO_STDOUT=False
    POLLTIME=30
    KEEP_LOOPING = True
-   ROOT_PATH= HOME_DIR + "/arbitrage/"
+   ROOT_PATH= HOME_DIR + "arbitrage/"
    print ("Its AWS platform")
 
 elif 'Ubuntu' in platform.platform():
@@ -40,14 +40,14 @@ elif 'Ubuntu' in platform.platform():
    LIVEQUOTE = False
    LOG_TO_STDOUT=True
    KEEP_LOOPING = False
-   ROOT_PATH= HOME_DIR + "/tmp/tada/"
+   ROOT_PATH= HOME_DIR + "tmp/tada/"
 
 else:
    PLATFORMTYPE = "mac"
    POLLTIME = 30
    LOG_TO_STDOUT=True
    KEEP_LOOPING = True
-   ROOT_PATH = HOME_DIR + "/Documents/Github/arbitrage/" 
+   ROOT_PATH = HOME_DIR + "Documents/Github/arbitrage/" 
    
 FILE_NAME = ROOT_PATH + "myalerts.ini"
 #print ("sys.platform : " + sys.platform)
@@ -68,7 +68,7 @@ if LOG_TO_STDOUT:
    fh = logging.StreamHandler(sys.stdout)   
    fh.setFormatter(formatter)
 else:
-   LOG_FILE = HOME_DIR + "/history_arbitrage.log"
+   LOG_FILE = HOME_DIR + "history_arbitrage.log"
    fh = logging.FileHandler(LOG_FILE)
    fh.setFormatter(formatter)
 
