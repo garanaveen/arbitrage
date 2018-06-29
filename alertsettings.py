@@ -19,6 +19,7 @@ def get_myalerts_file():
    latest_file = repo_myalerts_file 
    if (os.path.isfile(local_myalerts_file)) and (os.path.getctime(local_myalerts_file) > os.path.getctime(repo_myalerts_file)) :
       latest_file = local_myalerts_file
+   cfg.logger.info("myalerts_file : %s", latest_file)
    return latest_file
 
 class Alert:
