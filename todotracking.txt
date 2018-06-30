@@ -35,3 +35,7 @@ https://aws.amazon.com/getting-started/tutorials/send-an-email/
 3 - Figure out a way to edit myalerts.ini online.
 
 
+How to access webpage? IP followed Port number 
+How to serve a webpage?
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html
+
