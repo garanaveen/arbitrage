@@ -6,10 +6,10 @@ import wget
 import os
 import projectconfig as cfg
 import re
+from argparser import opts
 
 
 #FILE_NAME = "myalerts.ini"
-VERBOSE = False
 
 def get_myalerts_file():
    #Get the latest myalerts.ini file based on timestamp.
@@ -19,7 +19,8 @@ def get_myalerts_file():
    latest_file = repo_myalerts_file 
    if (os.path.isfile(local_myalerts_file)) and (os.path.getctime(local_myalerts_file) > os.path.getctime(repo_myalerts_file)) :
       latest_file = local_myalerts_file
-   cfg.logger.info("myalerts_file : %s", latest_file)
+   if(opts.verbose):
+      cfg.logger.info("myalerts_file : %s", latest_file)
    return latest_file
 
 class Alert:
@@ -55,7 +56,7 @@ class AlertSettings:
       elif transaction_type == "sell":
          tool_tip = "sell if ratio is greater than %s" % ratio
 
-      if VERBOSE:
+      if opts.verbose:
          print ("tool_tip : " + currency + " : " + tool_tip)
 
       return tool_tip.rstrip()
@@ -86,11 +87,11 @@ class AlertSettings:
              else:
                 #ignore this line
                 continue
-          elif VERBOSE:
+          elif opts.verbose:
              print ("myalert didn't match regex : " + myalert)
 
 
-      if VERBOSE:
+      if opts.debug:
          self.print_everything()
       f.close()
 
@@ -137,6 +138,7 @@ if __name__ == "__main__":
 #
 
    print ("myalerts.ini file : ",  get_myalerts_file())
+   print ("opts.verbose : ", opts.verbose)
 
 
 
