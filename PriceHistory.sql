@@ -1,8 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE PriceHistory;
-
-CREATE TABLE PriceHistory(
+CREATE TABLE IF NOT EXISTS PriceHistory(
 Exchange text,
 RelativeTimeStamp integer,
 TimeStampStr text,
