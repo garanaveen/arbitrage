@@ -14,6 +14,12 @@ parser.add_argument("--loop", dest='loop', action="store_true",
 parser.add_argument("--noloop", dest='loop', action="store_false",
                     help="don't run the arbitration in loop")
 
+parser.add_argument("--buy", dest='buyonly', action="store_true",
+                    help="runs arbitrage for buy only")
+
+parser.add_argument("--sell", dest='sellonly', action="store_true",
+                    help="runs arbitrage for sell only")
+
 opts = parser.parse_args()
 
 if __name__ == "__main__":

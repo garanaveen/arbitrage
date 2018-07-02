@@ -39,10 +39,17 @@ if __name__ == "__main__":
    while True:
       #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
       try:
-         calculate_arbitrage("highest_bid")
-         cfg.LIVEQUOTE = False
-         calculate_arbitrage("lowest_ask")
-         cfg.LIVEQUOTE = True
+         if opts.sellonly:
+            calculate_arbitrage("highest_bid") #sell
+         elif opts.buyonly:
+            calculate_arbitrage("lowest_ask") #buy
+         else:
+            originalValueOfLiveQuote = cfg.LIVEQUOTE
+            calculate_arbitrage("highest_bid") #sell
+            cfg.LIVEQUOTE = False
+            calculate_arbitrage("lowest_ask") #buy
+            cfg.LIVEQUOTE = originalValueOfLiveQuote
+            
       except ValueError as valueErr:
          cfg.logger.info("ERROR : ValueError exception occured: {0}".format(valueErr))
       except:
