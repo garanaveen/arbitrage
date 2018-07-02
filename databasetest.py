@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
+
 import sqlite3
+import projectconfig as cfg
 
 if __name__ == "__main__":
 
-   conn = sqlite3.connect('PriceHistory.db')
+   
+   DB_FILE = cfg.ROOT_PATH + "PriceHistory.db"
+   conn = sqlite3.connect(DB_FILE)
 
    c = conn.cursor()
 
@@ -14,7 +18,9 @@ if __name__ == "__main__":
 
 
    #TODO : Check if the file is present before trying to open it. If the file is not present, throw an error to user.
-   file_object  = open('./PriceHistory.sql', mode='r')
+
+   SQL_FILE = cfg.ROOT_PATH + "PriceHistory.sql"
+   file_object  = open(SQL_FILE, mode='r')
    with file_object as f:
       c.executescript(f.read())
 

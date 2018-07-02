@@ -10,12 +10,13 @@ import logging
 #Calculates the arbitrage %age between two exhange rates.
 
 class CalculateArbitrage:
-   alrtSettings = AlertSettings()
+   alrtSettings = None
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
       self.notifysubject = ""
       self.notifymessage = ""
+      self.alrtSettings = AlertSettings()
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")

@@ -19,3 +19,6 @@ Numbers are logged in to history_arbitrage.log
 
 Nothing is stored in database. Currently everything is logged in to history_arbitrage.log
 
+Install list,
+python (as in python2)
+sudo apt install sqlite
