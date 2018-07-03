@@ -5,6 +5,7 @@ from alertsettings import AlertSettings
 from exchangerate import get_exchangerate
 import  notify as ntf
 import projectconfig as cfg
+from argparser import opts
 import logging
 
 #Calculates the arbitrage %age between two exhange rates.
@@ -22,10 +23,20 @@ class CalculateArbitrage:
       cfg.logger.info("-------------------------------")
       exchangeRate = "Exchange rate : " + str(get_exchangerate())
       cfg.logger.info(exchangeRate)
-      self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
-      self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
-      self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
-      self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
+      if opts.currency == 'btc':
+         self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
+      elif opts.currency == 'ltc':
+         self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
+      elif opts.currency == 'eth':
+         self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
+      elif opts.currency == 'bch':
+         self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
+      else:
+         self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
+         self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
+         self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
+         self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
+
       if cfg.EMAIL_NOTIFY:
          ntf.notifyviaemail(self.notifysubject, self.notifymessage)
 

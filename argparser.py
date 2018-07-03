@@ -20,11 +20,17 @@ parser.add_argument("--buy", dest='buyonly', action="store_true",
 parser.add_argument("--sell", dest='sellonly', action="store_true",
                     help="runs arbitrage for sell only")
 
+parser.add_argument("-c", "--currency", dest='currency', default='all',
+                    help="specify 3 letter acronym of the currency (ex : ltc)")
+
 opts = parser.parse_args()
 
 if __name__ == "__main__":
    print ("verbose : ", opts.verbose)
    print ("debug : ", opts.debug)
    print ("loop : ", opts.loop)
+   print ("currency : ", opts.currency)
 
+   if opts.currency is 'eth':
+      print ("True")
 
