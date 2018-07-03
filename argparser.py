@@ -23,6 +23,9 @@ parser.add_argument("--sell", dest='sellonly', action="store_true",
 parser.add_argument("-c", "--currency", dest='currency', default='all',
                     help="specify 3 letter acronym of the currency (ex : ltc)")
 
+parser.add_argument("--polltime", dest='polltime', default='30s',
+                    help="Frequency at which the polling should happen. Ex. 30s, 2m, 1h")
+
 opts = parser.parse_args()
 
 if __name__ == "__main__":
@@ -30,7 +33,5 @@ if __name__ == "__main__":
    print ("debug : ", opts.debug)
    print ("loop : ", opts.loop)
    print ("currency : ", opts.currency)
-
-   if opts.currency is 'eth':
-      print ("True")
-
+   print ("polltime : ", opts.polltime)
+   

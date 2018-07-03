@@ -8,12 +8,27 @@ from exchangerate import get_exchangerate
 from calculatearbitrage import CalculateArbitrage
 
 import projectconfig as cfg
+import re
 
 from argparser import opts
 
-
 import time
 import sys
+
+def get_polltime():
+   polltimeinseconds = 30 #Default is 30 seconds
+   valid = re.compile('[0-9]{1,2}[a-zA-Z]')
+   if (valid.match(opts.polltime)):
+      unit = opts.polltime[-1]
+      if unit == 's':
+         multiplier = 1
+      elif unit == 'm':
+         multiplier = 60
+      elif unit == 'h':
+         multiplier = 60*60
+      number = opts.polltime[0:-1]
+      polltimeinseconds = int(number) * multiplier
+   return polltimeinseconds
 
 def calculate_arbitrage(quoteType):
     cfg.QUOTETYPE = quoteType
@@ -34,7 +49,7 @@ def calculate_arbitrage(quoteType):
 
 
 if __name__ == "__main__":
-   print ("opts.verbose : ",  opts.verbose)
+   polltimeinseconds  = get_polltime()
 
    while True:
       #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
@@ -58,6 +73,5 @@ if __name__ == "__main__":
 
       if(not opts.loop):
          break
-      time.sleep(cfg.POLLTIME)
+      time.sleep(polltimeinseconds)
       cfg.ITERATION += 1
-
