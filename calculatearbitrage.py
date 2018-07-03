@@ -48,6 +48,7 @@ class CalculateArbitrage:
       stringToEmail += "\n" + stringToPrint
       (is_matched, trade_tip) = self.alrtSettings.is_alert_settings_matched(currency, ratio)
       if(is_matched):
+         cfg.MATCHED = True
          appendExtraInfo = " (TradeTip : " + trade_tip + ")"
          appendExtraInfo = " (MATCHES myalerts.ini)"
          stringToPrint += appendExtraInfo
@@ -55,6 +56,7 @@ class CalculateArbitrage:
          self.notifysubject += currency + ":" + str(round(ratio,2)) + "%,"
          self.notifymessage += stringToEmail + "\n"
          #print stringToPrint
+      
       cfg.logger.info(stringToPrint)
       
 

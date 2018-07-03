@@ -27,8 +27,8 @@ def get_usdinr():
       return exchangerate
 
 def get_exchangerate():
-   if is_correct_frequency() and is_correct_platform():
-      print ("Getting live exchange rate")
+   if cfg.MATCHED_IN_PREVIOUS_ITERATION or (is_correct_frequency() and is_correct_platform()):
+      cfg.logger.info("Getting live exchange rate")
       exchangerate = get_usdinr()
    else:
       liveQuoteOriginalValue = cfg.LIVEQUOTE

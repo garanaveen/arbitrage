@@ -13,6 +13,7 @@ EMAIL_NOTIFY=True
 KEEP_LOOPING=True
 VERBOSE=False
 
+MATCHED=False
 #This variable gets the quotes online everytime. Time consuming if True. 
 #Make it False if you are testing some other parts of the code which doesn't require live/current quotes. It will use cached files instead.
 LIVEQUOTE = True

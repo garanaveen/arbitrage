@@ -53,6 +53,8 @@ if __name__ == "__main__":
 
    while True:
       #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
+      cfg.MATCHED_IN_PREVIOUS_ITERATION = cfg.MATCHED
+      cfg.MATCHED = False
       try:
          if opts.sellonly:
             calculate_arbitrage("highest_bid") #sell
