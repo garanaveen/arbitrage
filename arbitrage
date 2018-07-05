@@ -69,6 +69,11 @@ if __name__ == "__main__":
             
       except ValueError as valueErr:
          cfg.logger.info("ERROR : ValueError exception occured: {0}".format(valueErr))
+      except KeyError as keyErr:
+         cfg.logger.info("ERROR : KeyError exception occured for '{0}'. Check if json file was downloaded correctly.".format(keyErr))
+      except UnboundLocalError as localError:
+         cfg.logger.info("ERROR : UnboundLocalError exception occured: {0}".format(localError))
+         cfg.logger.info("ERROR : Is it because of expired exchange rate key? (exchangerateapi.py)")
       except:
          cfg.logger.info("ERROR : Unknown exception : %s, %s, %s" % (sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
          

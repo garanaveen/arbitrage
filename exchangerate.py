@@ -39,6 +39,7 @@ def get_exchangerate():
    return exchangerate
 
 if __name__ == "__main__":
-   rate = get_exchangerate()
+   cfg.MATCHED_IN_PREVIOUS_ITERATION = True
+   rate = get_usdinr()
    print ("rate : " + str(rate))
 

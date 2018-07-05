@@ -21,8 +21,9 @@ class CalculateArbitrage:
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")
-      exchangeRate = "Exchange rate : " + str(get_exchangerate())
-      cfg.logger.info(exchangeRate)
+      if opts.verbose:
+         exchangeRate = "Exchange rate : " + str(get_exchangerate())
+         cfg.logger.info(exchangeRate)
       if opts.currency == 'btc':
          self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
       elif opts.currency == 'ltc':
