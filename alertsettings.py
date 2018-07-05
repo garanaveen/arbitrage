@@ -57,7 +57,7 @@ class AlertSettings:
          tool_tip = "sell if ratio is greater than %s" % ratio
 
       if opts.verbose:
-         print ("tool_tip : " + currency + " : " + tool_tip)
+         cfg.logger.info("tool_tip : %s : %s" , currency , tool_tip)
 
       return tool_tip.rstrip()
          
