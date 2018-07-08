@@ -18,6 +18,7 @@ class CalculateArbitrage:
       self.notifysubject = ""
       self.notifymessage = ""
       self.alrtSettings = AlertSettings()
+      cfg.logger.info("Creating a new instance of AlertSettings()")
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")

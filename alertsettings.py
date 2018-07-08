@@ -63,6 +63,8 @@ class AlertSettings:
          
       #Print sell buy suggestion
    def parse_my_alert_settings(self):
+      if opts.verbose:
+         cfg.logger.info("parse_my_alert_settings(), entry")
       myalerts_file = get_myalerts_file()
       f = open(myalerts_file, 'r')
       myalert = "dummyline"
