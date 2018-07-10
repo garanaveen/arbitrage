@@ -43,7 +43,8 @@ class CalculateArbitrage:
          self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
          self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
 
-      self.printmaxminarbitrage()
+      if opts.debug:
+         self.printmaxminarbitrage()
 
       if cfg.EMAIL_NOTIFY:
          ntf.notifyviaemail(self.notifysubject, self.notifymessage)
@@ -70,7 +71,6 @@ class CalculateArbitrage:
       
    def storemaxminarbitrage(self, ratio, currency):
        #TODO : Store them in CurrentArbitrage table of database.
-      print "storemaxminarbitrage, QUOTETYPE : ", cfg.QUOTETYPE
       if cfg.QUOTETYPE == "highest_bid": #sell
          if(self.maxsellarbitragepercent < ratio):
             self.maxsellarbitragepercent = ratio
@@ -79,8 +79,8 @@ class CalculateArbitrage:
          if(self.minbuyarbitragepercent > ratio):
             self.minbuyarbitragepercent = ratio
             self.minbuyarbitragecurrency = currency
-      if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
-         print "spread found"
+      #if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
+      #   print "spread found"
 
    def printmaxminarbitrage(self):
       print "maxsell, " , self.maxsellarbitragepercent, self.maxsellarbitragecurrency

@@ -31,7 +31,6 @@ class Exchange:
       print("eth:" + str(self.price.eth))
    
    def store_rates(self, transactionType):
-      print ("exchange.py, store_current_price()")
       self.dbutil.set_current_price(self.name, transactionType, "BTC", self.price.btc)
       self.dbutil.set_current_price(self.name, transactionType, "LTC", self.price.ltc)
       self.dbutil.set_current_price(self.name, transactionType, "ETH", self.price.eth)

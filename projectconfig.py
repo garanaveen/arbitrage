@@ -32,7 +32,7 @@ if 'aws' in platform.platform():
    POLLTIME=30
    KEEP_LOOPING = True
    ROOT_PATH= HOME_DIR + "arbitrage/"
-   print ("Its AWS platform")
+   #print ("Its AWS platform")
 
 elif 'Ubuntu' in platform.platform():
    PLATFORMTYPE = "linux"
