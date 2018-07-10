@@ -1,6 +1,11 @@
+Add TUSD too to the list to get an idea on what the arbitrage %age for stable coin on koinex. Consider its value to be $1 on coinbase.
+
 Add lowest_ask price for koinex
 
 Enums for currencies (viz. LTC, ETH, BTC, BCH)
+
+
+Store arbitragePercentage to database and print information if lowest buyarbitrage is less than highest sellarbitrage. (storemaxminarbitrage)
 
 Implement parse_args with the following options,
 https://docs.python.org/2/library/argparse.html

@@ -5,6 +5,8 @@ from price import Price
 from exchange import Exchange
 from exchangerate import get_exchangerate
 import projectconfig as cfg
+import databaseutils as dbutils
+
 
 import json
 import shutil
@@ -28,7 +30,7 @@ class koinex(Exchange):
       usdinrrate = get_exchangerate()
 
       #highest_bid is your effective sell price (i.e. someone is ready to buy for that price)
-      if cfg.QUOTETYPE == "highest_bid":
+      if cfg.QUOTETYPE == "highest_bid": #sell
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['highest_bid'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['highest_bid'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['highest_bid'])
@@ -37,7 +39,8 @@ class koinex(Exchange):
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
-      elif cfg.QUOTETYPE == "lowest_ask":
+         self.store_rates(dbutils.TRANSACTION_SELL)
+      elif cfg.QUOTETYPE == "lowest_ask": #buy
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['lowest_ask'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['lowest_ask'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['lowest_ask'])
@@ -46,6 +49,7 @@ class koinex(Exchange):
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
+         self.store_rates(dbutils.TRANSACTION_BUY)
       else:
          self.nativePrice.btc = float(jsonfile['prices']['inr']['BTC'])
          self.nativePrice.ltc = float(jsonfile['prices']['inr']['LTC'])
@@ -57,9 +61,15 @@ class koinex(Exchange):
          self.price.bch = self.nativePrice.bch/usdinrrate
 
 
+#   def store_rates(self, transactionType):
+#      Exchange.store_rates(self, self.name, transactionType)
+
 
 if __name__ == "__main__":
    cfg.LIVEQUOTE = False
+   cfg.QUOTETYPE = "highest_bid"
    jsonfile = readurl(base_url, ".koinex.json")
    btcLastTradedPrice = float(jsonfile['prices']['inr']['BTC'])
    print ("btcLastTradedPrice : " + str(btcLastTradedPrice))
+   koinexobj = koinex()
+   koinexobj.get_rates()

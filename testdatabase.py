@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-
 import sqlite3
 import projectconfig as cfg
 
 if __name__ == "__main__":
-
    
    DB_FILE = cfg.ROOT_PATH + "PriceHistory.db"
    conn = sqlite3.connect(DB_FILE)
@@ -25,10 +23,9 @@ if __name__ == "__main__":
       c.executescript(f.read())
 
    # Insert a row of data
-   c.execute("INSERT INTO PriceHistory VALUES ('KOINEX', 1, '2006-01-05','LTC',172.35)")
-   c.execute("INSERT INTO PriceHistory VALUES ('GDAX', 1, '2006-01-05','ETH',663.35)")
-   c.execute("INSERT INTO PriceHistory VALUES ('KOINEX', 2, '2006-01-05','ETH',710.35)")
-   c.execute("INSERT INTO PriceHistory VALUES ('GDAX', 2, '2006-01-05','LTC',163.35)")
+   c.execute("REPLACE INTO CurrentPrice VALUES ('koinex', 1, 'LTC',272.35)")
+   #c.execute("INSERT INTO CurrentPrice VALUES ('koinex', 1, 'LTC',172.35)")
+   #c.execute("UPDATE CurrentPrice set Price  = 92 where Exchange = 'koinex' and TransactionType = 1 and CurrencyCode = 'LTC'")
 
    # Save (commit) the changes
    conn.commit()

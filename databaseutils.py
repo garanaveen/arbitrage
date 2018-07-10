@@ -3,6 +3,12 @@
 
 import sqlite3
 import projectconfig as cfg
+from datetime import datetime
+import time
+
+
+TRANSACTION_SELL = 0
+TRANSACTION_BUY = 1
 
 
 
@@ -29,18 +35,18 @@ class DatabaseUtils:
       return getattr(self.instance, attr)
 
    
-   def set_price(self, exchange, transaction_type, currency, price):
-      nowTimeStamp = '2018-07-08 00:00:00';
-      dbQuery = "INSERT INTO PriceHistory VALUES ('%s', '%s', '%s','%s',%f)" % (exchange, transaction_type, nowTimeStamp, currency, price)
-      print "dbQuery : "
-      print dbQuery
+   def set_current_price(self, exchange, transaction_type, currency, price):
+      dbQuery = "REPLACE INTO CurrentPrice VALUES ('%s', '%s', '%s', %f)" % (exchange, transaction_type, currency, price)
+      #print "dbQuery : "
+      #print dbQuery
    
-      # Insert a row of data
-      #c.execute("INSERT INTO PriceHistory VALUES ('GDAX', 2, '2006-01-05','LTC',163.35)")
       self.c.execute(dbQuery)
 
       # Save (commit) the changes
       self.conn.commit()
+
+   def get_price(self, exchange, transaction_type, currency):
+      return 0
 
    # We can also close the connection if we are done with it.
    # Just be sure any changes have been committed or they will be lost.
@@ -50,5 +56,11 @@ class DatabaseUtils:
 
 if __name__ == "__main__":
    dbutil = DatabaseUtils()
-   dbutil.set_price("koinex", "sell", "LTC", 90)
+   price = 90;
+   while True:
+      dbutil.set_current_price("koinex", TRANSACTION_SELL, "LTC", price)
+      time.sleep(1)
+      price = price+1
    dbutil.close()
+
+

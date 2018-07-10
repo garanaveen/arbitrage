@@ -35,12 +35,11 @@ def calculate_arbitrage(quoteType):
     gex = gdax()
     gex.get_rates()
     #gex.print_price()
-    gex.store_rates()
+    
 
     koine = koinex()
     koine.get_rates()
     #koine.print_price()
-    koine.store_rates()
 
     arb = CalculateArbitrage(koine, gex)
     arb.printarbitrage()
@@ -52,9 +51,10 @@ if __name__ == "__main__":
    polltimeinseconds  = get_polltime()
 
    while True:
-      #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
       cfg.MATCHED_IN_PREVIOUS_ITERATION = cfg.MATCHED
       cfg.MATCHED = False
+
+      #TODO : This try really should be moved to get_rates() because thats where the live ticker download could fail.
       try:
          if opts.sellonly:
             calculate_arbitrage("highest_bid") #sell

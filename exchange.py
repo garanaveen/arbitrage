@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 from price import Price
+from databaseutils import DatabaseUtils
 
 class Exchange:
    price = Price()
    nativePrice = Price()
    native = True #If this exchange is not in USD, then assign it to false.
    name = "Exchange"
+   dbutil = DatabaseUtils()
 
    def __init__(self):
       pass
@@ -28,8 +30,11 @@ class Exchange:
       print("bch:" + str(self.price.bch))
       print("eth:" + str(self.price.eth))
    
-   def store_rates(self):
-      pass
-      #print ("TODO : store_rates to the PriceHistory.db")
-      #TODO : open PriceHistory.db and store the price
+   def store_rates(self, transactionType):
+      print ("exchange.py, store_current_price()")
+      self.dbutil.set_current_price(self.name, transactionType, "BTC", self.price.btc)
+      self.dbutil.set_current_price(self.name, transactionType, "LTC", self.price.ltc)
+      self.dbutil.set_current_price(self.name, transactionType, "ETH", self.price.eth)
+      self.dbutil.set_current_price(self.name, transactionType, "BCH", self.price.bch)
+
 

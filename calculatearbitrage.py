@@ -15,6 +15,10 @@ class CalculateArbitrage:
    def __init__(self, exchange1, exchange2):
       self.e1 = exchange1
       self.e2 = exchange2
+      self.maxsellarbitragepercent = -100
+      self.maxsellarbitragecurrency = None
+      self.minbuyarbitragepercent = 100
+      self.minbuyarbitragecurrency = None
       self.notifysubject = ""
       self.notifymessage = ""
       self.alrtSettings = AlertSettings()
@@ -39,12 +43,15 @@ class CalculateArbitrage:
          self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
          self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
 
+      self.printmaxminarbitrage()
+
       if cfg.EMAIL_NOTIFY:
          ntf.notifyviaemail(self.notifysubject, self.notifymessage)
 
    def calculate_arbitrage(self, currency, np1, p1, p2):
       diff = p1-p2
       ratio = (p1-p2)*100/p2
+      self.storemaxminarbitrage(ratio, currency)
       stringToPrint =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "):" + str(round(p1, 2)) + "," + str(self.e2) + ":" + "," + str(p2) + " : Diff(" + str(round(diff, 2)) + ")" + ", ratio:" + str(round(ratio, 2)) + "% - " + cfg.get_transaction_type()
       stringToEmail =  currency + "-" + str(self.e1) + "(" + str(round(np1,0)) + "), ratio:" + str(round(ratio, 2)) + " : " + cfg.get_transaction_type()
       stringToEmail += "\n" + stringToPrint
@@ -61,14 +68,21 @@ class CalculateArbitrage:
       
       cfg.logger.info(stringToPrint)
       
+   def storemaxminarbitrage(self, ratio, currency):
+       #TODO : Store them in CurrentArbitrage table of database.
+      print "storemaxminarbitrage, QUOTETYPE : ", cfg.QUOTETYPE
+      if cfg.QUOTETYPE == "highest_bid": #sell
+         if(self.maxsellarbitragepercent < ratio):
+            self.maxsellarbitragepercent = ratio
+            self.maxsellarbitragecurrency = currency
+      elif cfg.QUOTETYPE == "lowest_ask": #buy
+         if(self.minbuyarbitragepercent > ratio):
+            self.minbuyarbitragepercent = ratio
+            self.minbuyarbitragecurrency = currency
+      if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
+         print "spread found"
 
-
-def match_notify_conditions(ratio):
-   retVal = False
-   if ((ratio > 11) and cfg.QUOTETYPE == "highest_bid"):
-      retVal = True
-   if ((ratio < 7) and cfg.QUOTETYPE == "lowest_ask"):
-      retVal = True
-
-   return retVal
+   def printmaxminarbitrage(self):
+      print "maxsell, " , self.maxsellarbitragepercent, self.maxsellarbitragecurrency
+      print "minbuy, ", self.minbuyarbitragepercent, self.minbuyarbitragecurrency
 

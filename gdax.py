@@ -3,6 +3,7 @@
 from utils import readurl
 from price import Price
 from exchange import Exchange
+import databaseutils as dbutils
 
 import json
 import shutil
@@ -23,6 +24,8 @@ class gdax(Exchange):
       self.price.ltc = self.get_price("LTC")
       self.price.bch = self.get_price("BCH")
       self.price.eth = self.get_price("ETH")
+      self.store_rates(dbutils.TRANSACTION_SELL)
+      self.store_rates(dbutils.TRANSACTION_BUY)
 
    def get_price(self, currency):
       url = base_url + currency + "-USD/ticker"
@@ -30,4 +33,8 @@ class gdax(Exchange):
       jsonfile = readurl(url, cache_file_name)
       price = float(jsonfile['price'])
       return  price
+
+if __name__ == "__main__":
+   gdaxobj = gdax()
+   gdaxobj.get_rates()
 
