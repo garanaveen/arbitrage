@@ -35,8 +35,14 @@ class DatabaseUtils:
       return getattr(self.instance, attr)
 
    
+   def set_current_arbitrage(self, exchange1, exchange2, transaction_type, currency, arbitrage_percent):
+      print "set_current_arbitrage called"
+      dbQuery = "REPLACE INTO CurrentArbitrage VALUES ('%s', '%s', '%d', '%s', %f)" % (exchange1, exchange2, transaction_type, currency, arbitrage_percent)
+      self.c.execute(dbQuery)
+      self.conn.commit()
+      
    def set_current_price(self, exchange, transaction_type, currency, price):
-      dbQuery = "REPLACE INTO CurrentPrice VALUES ('%s', '%s', '%s', %f)" % (exchange, transaction_type, currency, price)
+      dbQuery = "REPLACE INTO CurrentPrice VALUES ('%s', '%d', '%s', %f)" % (exchange, transaction_type, currency, price)
       #print "dbQuery : "
       #print dbQuery
    
@@ -57,10 +63,8 @@ class DatabaseUtils:
 if __name__ == "__main__":
    dbutil = DatabaseUtils()
    price = 90;
-   while True:
-      dbutil.set_current_price("koinex", TRANSACTION_SELL, "LTC", price)
-      time.sleep(1)
-      price = price+1
+   dbutil.set_current_price("koinex", TRANSACTION_SELL, "LTC", price)
+   dbutil.set_current_arbitrage("koinex", "gdax", TRANSACTION_SELL, "LTC", price)
    dbutil.close()
 
 

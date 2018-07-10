@@ -1,0 +1,2 @@
+      dbQuery = "REPLACE INTO CurrentArbitrage VALUES ('%s', '%s', '%d', '%s', %f)" % (exchange1, exchange2, transaction_type, currency, arbitrage_percent)
+

@@ -3,6 +3,11 @@
 import sqlite3
 import projectconfig as cfg
 
+
+def create_db_if_not_exists():
+   pass
+   
+
 if __name__ == "__main__":
    
    DB_FILE = cfg.ROOT_PATH + "PriceHistory.db"

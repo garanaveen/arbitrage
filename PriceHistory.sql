@@ -28,3 +28,4 @@ CONSTRAINT CurrentPrice_pk PRIMARY KEY (Exchange1, Exchange2, TransactionType, C
 
 COMMIT;
 
+

@@ -7,6 +7,11 @@ import  notify as ntf
 import projectconfig as cfg
 from argparser import opts
 import logging
+import databaseutils as dbutilsobj
+from databaseutils import DatabaseUtils
+
+from gdax import gdax
+from koinex import koinex
 
 #Calculates the arbitrage %age between two exhange rates.
 
@@ -22,6 +27,8 @@ class CalculateArbitrage:
       self.notifysubject = ""
       self.notifymessage = ""
       self.alrtSettings = AlertSettings()
+      self.dbutil = DatabaseUtils()
+
       cfg.logger.info("Creating a new instance of AlertSettings()")
    
    def printarbitrage(self):
@@ -70,19 +77,37 @@ class CalculateArbitrage:
       cfg.logger.info(stringToPrint)
       
    def storemaxminarbitrage(self, ratio, currency):
-       #TODO : Store them in CurrentArbitrage table of database.
+      #TODO : Store them in CurrentArbitrage table of database.
       if cfg.QUOTETYPE == "highest_bid": #sell
          if(self.maxsellarbitragepercent < ratio):
             self.maxsellarbitragepercent = ratio
             self.maxsellarbitragecurrency = currency
+	    self.dbutil.set_current_arbitrage('koinex', 'gdax',  dbutilsobj.TRANSACTION_SELL, currency, ratio)
+            if opts.verbose:
+               cfg.logger.info("set_current_arbitrage(), %d, %s, %f", dbutilsobj.TRANSACTION_SELL, currency, ratio)
       elif cfg.QUOTETYPE == "lowest_ask": #buy
          if(self.minbuyarbitragepercent > ratio):
             self.minbuyarbitragepercent = ratio
             self.minbuyarbitragecurrency = currency
-      #if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
-      #   print "spread found"
+	    self.dbutil.set_current_arbitrage('koinex', 'gdax', dbutilsobj.TRANSACTION_BUY, currency, ratio)
+            if opts.verbose:
+               cfg.logger.info("set_current_arbitrage(), %d, %s, %f", dbutilsobj.TRANSACTION_SELL, currency, ratio)
+      if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
+         print "spread found"
 
    def printmaxminarbitrage(self):
       print "maxsell, " , self.maxsellarbitragepercent, self.maxsellarbitragecurrency
       print "minbuy, ", self.minbuyarbitragepercent, self.minbuyarbitragecurrency
+
+if __name__ == "__main__":
+   cfg.QUOTETYPE = "highest_bid"
+
+   gex = gdax()
+   gex.get_rates()
+   koine = koinex()
+   koine.get_rates()
+ 
+   calarb = CalculateArbitrage(koine, gex)
+   calarb.storemaxminarbitrage(6, 'LTC')
+
 
