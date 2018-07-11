@@ -22,3 +22,11 @@ Nothing is stored in database. Currently everything is logged in to history_arbi
 Install list,
 python (as in python2)
 sudo apt install sqlite
+
+-----------------
+First install pip3,
+sudo apt-get install python3-pip
+Then install pyqt5 using pip3
+pip3 install pyqt5
+-----------------
+
