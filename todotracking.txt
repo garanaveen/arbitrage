@@ -1,3 +1,5 @@
+Read myalerts.ini for every iteration.
+
 Add TUSD too to the list to get an idea on what the arbitrage %age for stable coin on koinex. Consider its value to be $1 on coinbase.
 
 Add lowest_ask price for koinex

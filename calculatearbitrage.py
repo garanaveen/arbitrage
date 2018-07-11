@@ -105,15 +105,14 @@ class CalculateArbitrage:
          cfg.logger.info("bestbuy : %f %s", bestbuy, buycurrency) 
       
       if bestbuy < bestsell:
-         spreadmessage = "Spread found. Buy %s at %f on %s exchange. Sell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         spreadmessage = "Spread found. Buy %s at %f on %s. Sell %s at %f arbitrage on %s" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
          cfg.logger.info(spreadmessage)
          if cfg.EMAIL_NOTIFY:
             ntf.notifyviaemail(spreadmessage, spreadmessage)
       else:
-         spreadmessage = "Spread not found. Buy %s at %f on %s exchange. Sell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         spreadmessage = "Spread not found. BestBuy is %s at %f on %s exchange. BestSell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
          cfg.logger.info(spreadmessage)
 
-   
 
 if __name__ == "__main__":
    cfg.QUOTETYPE = "highest_bid"
