@@ -14,9 +14,10 @@ TRANSACTION_BUY = 1
 
 class DatabaseUtils:
    instance = None
-   initialized = False
-   class __DatabaseUtils:
-      def __init__(self):
+   initialized = False 
+
+   class __DatabaseUtils: 
+      def __init__(self): 
          pass
    
    def initialize_database(self):
@@ -36,7 +37,6 @@ class DatabaseUtils:
 
    
    def set_current_arbitrage(self, exchange1, exchange2, transaction_type, currency, arbitrage_percent):
-      print "set_current_arbitrage called"
       dbQuery = "REPLACE INTO CurrentArbitrage VALUES ('%s', '%s', '%d', '%s', %f)" % (exchange1, exchange2, transaction_type, currency, arbitrage_percent)
       self.c.execute(dbQuery)
       self.conn.commit()
@@ -60,11 +60,36 @@ class DatabaseUtils:
       self.conn.close()
       self.initialized = False
 
+   
+   def get_minimum_buy_arbitrage_percent(self):
+      #Need to give exchange1 and exchange2 as parameters when supporting multiple exchanges.
+      dbQuery = "SELECT ArbitragePrice FROM CurrentArbitrage where TransactionType = 0;" # % (TRANSACTION_BUY)
+      self.c.execute(dbQuery)
+      minbuy = self.c.fetchone()[0]
+      dbQuery = "SELECT CurrencyCode FROM CurrentArbitrage where TransactionType = 0;" # % (TRANSACTION_BUY)
+      self.c.execute(dbQuery)
+      buycurrency = str(self.c.fetchone()[0])
+      return minbuy, buycurrency
+
+   def get_maximum_sell_arbitrate_percent(self):
+      dbQuery = "SELECT ArbitragePrice FROM CurrentArbitrage where TransactionType = 1;" # % (TRANSACTION_SELL)
+      self.c.execute(dbQuery)
+      maxsell = self.c.fetchone()[0]
+
+      dbQuery = "SELECT CurrencyCode FROM CurrentArbitrage where TransactionType = 1;" # % (TRANSACTION_BUY)
+      self.c.execute(dbQuery)
+      sellcurrency = str(self.c.fetchone()[0])
+
+      return maxsell, sellcurrency 
+
 if __name__ == "__main__":
    dbutil = DatabaseUtils()
-   price = 90;
-   dbutil.set_current_price("koinex", TRANSACTION_SELL, "LTC", price)
-   dbutil.set_current_arbitrage("koinex", "gdax", TRANSACTION_SELL, "LTC", price)
+   #dbutil.set_current_price("koinex", TRANSACTION_SELL, "LTC", 90)
+   #dbutil.set_current_arbitrage("koinex", "gdax", TRANSACTION_SELL, "LTC", 5)
+   print "buy:"
+   print dbutil.get_minimum_buy_arbitrage_percent()
+   print "sell:"
+   print dbutil.get_maximum_sell_arbitrate_percent()
    dbutil.close()
 
 

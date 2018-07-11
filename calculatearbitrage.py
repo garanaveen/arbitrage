@@ -28,8 +28,6 @@ class CalculateArbitrage:
       self.notifymessage = ""
       self.alrtSettings = AlertSettings()
       self.dbutil = DatabaseUtils()
-
-      cfg.logger.info("Creating a new instance of AlertSettings()")
    
    def printarbitrage(self):
       cfg.logger.info("-------------------------------")
@@ -92,12 +90,30 @@ class CalculateArbitrage:
 	    self.dbutil.set_current_arbitrage('koinex', 'gdax', dbutilsobj.TRANSACTION_BUY, currency, ratio)
             if opts.verbose:
                cfg.logger.info("set_current_arbitrage(), %d, %s, %f", dbutilsobj.TRANSACTION_SELL, currency, ratio)
-      if self.maxsellarbitragepercent > self.minbuyarbitragepercent:
-         print "spread found"
 
    def printmaxminarbitrage(self):
       print "maxsell, " , self.maxsellarbitragepercent, self.maxsellarbitragecurrency
       print "minbuy, ", self.minbuyarbitragepercent, self.minbuyarbitragecurrency
+
+   def calculate_spread_between_buy_and_sell(self):
+      dbutil = DatabaseUtils()
+      print "calculatearbitrage.py calculate_spread_between_buy_and_sell called"
+      bestsell, sellcurrency = self.dbutil.get_minimum_buy_arbitrage_percent()
+      bestbuy, buycurrency = self.dbutil.get_maximum_sell_arbitrate_percent()
+      if opts.verbose:
+         cfg.logger.info("bestsell : %f %s", bestsell, sellcurrency) 
+         cfg.logger.info("bestbuy : %f %s", bestbuy, buycurrency) 
+      
+      if bestbuy < bestsell:
+         spreadmessage = "Spread found. Buy %s at %f on %s exchange. Sell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         cfg.logger.info
+         if cfg.EMAIL_NOTIFY:
+            ntf.notifyviaemail(spreadmessage, spreadmessage)
+      else:
+         spreadmessage = "Spread not found. Buy %s at %f on %s exchange. Sell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         cfg.logger.info(spreadmessage)
+
+   
 
 if __name__ == "__main__":
    cfg.QUOTETYPE = "highest_bid"
@@ -108,6 +124,9 @@ if __name__ == "__main__":
    koine.get_rates()
  
    calarb = CalculateArbitrage(koine, gex)
-   calarb.storemaxminarbitrage(6, 'LTC')
+   calarb.calculate_spread_between_buy_and_sell()
 
+
+   #bestbuy = -7%
+   #bestsell = -6%
 

@@ -23,7 +23,7 @@ Exchange2 text,
 TransactionType integer,
 CurrencyCode text,
 ArbitragePrice real,
-CONSTRAINT CurrentPrice_pk PRIMARY KEY (Exchange1, Exchange2, TransactionType, CurrencyCode)
+CONSTRAINT CurrentPrice_pk PRIMARY KEY (Exchange1, Exchange2, TransactionType)
 );
 
 COMMIT;
