@@ -20,20 +20,22 @@ class Exchange:
       "Default rates. This method is supposed to be overridden by derived class and price should be set based on live quote for the exchange."
       self.price.btc = 1
       self.price.ltc = 2
-      self.price.bch = 3
-      self.price.eth = 4
+      self.price.eth = 3
+      self.price.bch = 4
+      self.price.tusd = 1
  
    def print_price(self):
       print("\n")
       print("btc:" + str(self.price.btc))
       print("ltc:" + str(self.price.ltc))
-      print("bch:" + str(self.price.bch))
       print("eth:" + str(self.price.eth))
+      print("bch:" + str(self.price.bch))
+      print("tusd:" + str(self.price.tusd))
    
    def store_rates(self, transactionType):
       self.dbutil.set_current_price(self.name, transactionType, "BTC", self.price.btc)
       self.dbutil.set_current_price(self.name, transactionType, "LTC", self.price.ltc)
       self.dbutil.set_current_price(self.name, transactionType, "ETH", self.price.eth)
       self.dbutil.set_current_price(self.name, transactionType, "BCH", self.price.bch)
-
+      self.dbutil.set_current_price(self.name, transactionType, "TUSD", self.price.tusd)
 

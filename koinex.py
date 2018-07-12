@@ -35,30 +35,36 @@ class koinex(Exchange):
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['highest_bid'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['highest_bid'])
          self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['highest_bid'])
+         self.nativePrice.tusd = float(jsonfile['stats']['inr']['TUSD']['highest_bid'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
+         self.price.tusd = self.nativePrice.tusd/usdinrrate
          self.store_rates(dbutils.TRANSACTION_SELL)
       elif cfg.QUOTETYPE == "lowest_ask": #buy
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['lowest_ask'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['lowest_ask'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['lowest_ask'])
          self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['lowest_ask'])
+         self.nativePrice.tusd = float(jsonfile['stats']['inr']['TUSD']['lowest_ask'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
+         self.price.tusd = self.nativePrice.tusd/usdinrrate
          self.store_rates(dbutils.TRANSACTION_BUY)
       else:
          self.nativePrice.btc = float(jsonfile['prices']['inr']['BTC'])
          self.nativePrice.ltc = float(jsonfile['prices']['inr']['LTC'])
          self.nativePrice.eth = float(jsonfile['prices']['inr']['ETH'])
          self.nativePrice.bch = float(jsonfile['prices']['inr']['BCH'])
+         self.nativePrice.tusd = float(jsonfile['prices']['inr']['TUSD'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
          self.price.eth = self.nativePrice.eth/usdinrrate
          self.price.bch = self.nativePrice.bch/usdinrrate
+         self.price.tusd = self.nativePrice.tusd/usdinrrate
 
 
 #   def store_rates(self, transactionType):
@@ -69,7 +75,7 @@ if __name__ == "__main__":
    cfg.LIVEQUOTE = False
    cfg.QUOTETYPE = "highest_bid"
    jsonfile = readurl(base_url, ".koinex.json")
-   btcLastTradedPrice = float(jsonfile['prices']['inr']['BTC'])
-   print ("btcLastTradedPrice : " + str(btcLastTradedPrice))
+   tusdLastTradedPrice = float(jsonfile['prices']['inr']['TUSD'])
+   print ("tusdLastTradedPrice : " + str(tusdLastTradedPrice))
    koinexobj = koinex()
    koinexobj.get_rates()

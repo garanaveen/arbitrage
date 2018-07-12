@@ -23,8 +23,6 @@ LOG_TO_STDOUT=True
 
 HOME_DIR=os.environ['HOME'] + "/"
 
-LOG_TO_STDOUT=True
-
 if 'aws' in platform.platform():
    PLATFORM = "aws"
    EMAIL_NOTIFY=True

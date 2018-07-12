@@ -24,6 +24,7 @@ class gdax(Exchange):
       self.price.ltc = self.get_price("LTC")
       self.price.bch = self.get_price("BCH")
       self.price.eth = self.get_price("ETH")
+      self.price.tusd = 1
       self.store_rates(dbutils.TRANSACTION_SELL)
       self.store_rates(dbutils.TRANSACTION_BUY)
 

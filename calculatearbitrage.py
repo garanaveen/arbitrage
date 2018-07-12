@@ -47,6 +47,7 @@ class CalculateArbitrage:
          self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
          self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
          self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
+         self.calculate_arbitrage("tusd", self.e1.nativePrice.tusd, self.e1.price.tusd, self.e2.price.tusd)
 
       if opts.debug:
          self.printmaxminarbitrage()
@@ -97,7 +98,6 @@ class CalculateArbitrage:
 
    def calculate_spread_between_buy_and_sell(self):
       dbutil = DatabaseUtils()
-      print "calculatearbitrage.py calculate_spread_between_buy_and_sell called"
       bestsell, sellcurrency = self.dbutil.get_minimum_buy_arbitrage_percent()
       bestbuy, buycurrency = self.dbutil.get_maximum_sell_arbitrate_percent()
       if opts.verbose:
