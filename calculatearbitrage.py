@@ -106,13 +106,14 @@ class CalculateArbitrage:
       
       alertspread = 2.5
       spread = bestsell - bestbuy
+      spreadinfo = "Buy %s at %f on %s. Sell %s at %f arbitrage on %s." % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
       if spread > 0:
-         spreadmessage = "Spread found. Buy %s at %f on %s. Sell %s at %f arbitrage on %s" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         spreadmessage = "Spread found. " + spreadinfo
          cfg.logger.info(spreadmessage)
-         if cfg.EMAIL_NOTIFY and spread > alertsettings:
+         if cfg.EMAIL_NOTIFY and spread > alertspread:
             ntf.notifyviaemail(spreadmessage, spreadmessage)
       else:
-         spreadmessage = "Spread not found. BestBuy is %s at %f on %s exchange. BestSell %s at %f arbitrage on %s exchange" % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
+         spreadmessage = "Spread not found. " + spreadinfo
          cfg.logger.info(spreadmessage)
 
 
