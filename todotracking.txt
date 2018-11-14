@@ -1,3 +1,6 @@
+ImportError: No module named emailcredentials - Print details on how the user can fix this. Need to create a file called emailcredentials.py with the authentication details.
+
+
 Read myalerts.ini for every iteration.
 
 Add TUSD too to the list to get an idea on what the arbitrage %age for stable coin on koinex. Consider its value to be $1 on coinbase.
