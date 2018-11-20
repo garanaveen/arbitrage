@@ -4,6 +4,8 @@ from utils import readurl
 from price import Price
 from exchange import Exchange
 import databaseutils as dbutils
+import projectconfig as cfg                                                                                   
+
 
 import json
 import shutil
@@ -21,8 +23,9 @@ class gdax(Exchange):
    def get_rates(self):
       self.price = Price()
       self.price.btc = self.get_price("BTC")
+      if cfg.ENABLEBCH:
+         self.price.bch = self.get_price("BCH")
       self.price.ltc = self.get_price("LTC")
-      self.price.bch = self.get_price("BCH")
       self.price.eth = self.get_price("ETH")
       self.price.tusd = 1
       self.store_rates(dbutils.TRANSACTION_SELL)
@@ -38,4 +41,6 @@ class gdax(Exchange):
 if __name__ == "__main__":
    gdaxobj = gdax()
    gdaxobj.get_rates()
+   gdaxobj.print_price()
+   print gdaxobj.price.btc
 

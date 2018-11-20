@@ -5,6 +5,7 @@ import platform
 import sys
 import os
 
+ENABLEBCH=False
 emailcount = 0
 ITERATION = 0
 EXCHANGERATE_ITERATION = 0

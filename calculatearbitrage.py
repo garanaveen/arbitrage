@@ -40,13 +40,14 @@ class CalculateArbitrage:
          self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
       elif opts.currency == 'eth':
          self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
-      elif opts.currency == 'bch':
+      elif opts.currency == 'bch' and cfg.ENABLEBCH:
          self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
       else:
          self.calculate_arbitrage("btc", self.e1.nativePrice.btc, self.e1.price.btc, self.e2.price.btc)
          self.calculate_arbitrage("ltc", self.e1.nativePrice.ltc, self.e1.price.ltc, self.e2.price.ltc)
          self.calculate_arbitrage("eth", self.e1.nativePrice.eth, self.e1.price.eth, self.e2.price.eth)
-         self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
+         if cfg.ENABLEBCH:
+            self.calculate_arbitrage("bch", self.e1.nativePrice.bch, self.e1.price.bch, self.e2.price.bch)
          self.calculate_arbitrage("tusd", self.e1.nativePrice.tusd, self.e1.price.tusd, self.e2.price.tusd)
 
       if opts.debug:

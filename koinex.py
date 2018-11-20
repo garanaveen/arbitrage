@@ -34,7 +34,8 @@ class koinex(Exchange):
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['highest_bid'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['highest_bid'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['highest_bid'])
-         self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['highest_bid'])
+         if cfg.ENABLEBCH:
+            self.nativePrice.bch = float(jsonfile['stats']['inr']['BCHABC']['highest_bid'])
          self.nativePrice.tusd = float(jsonfile['stats']['inr']['TUSD']['highest_bid'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
@@ -46,7 +47,8 @@ class koinex(Exchange):
          self.nativePrice.btc = float(jsonfile['stats']['inr']['BTC']['lowest_ask'])
          self.nativePrice.ltc = float(jsonfile['stats']['inr']['LTC']['lowest_ask'])
          self.nativePrice.eth = float(jsonfile['stats']['inr']['ETH']['lowest_ask'])
-         self.nativePrice.bch = float(jsonfile['stats']['inr']['BCH']['lowest_ask'])
+         if cfg.ENABLEBCH:
+            self.nativePrice.bch = float(jsonfile['stats']['inr']['BCHABC']['lowest_ask'])
          self.nativePrice.tusd = float(jsonfile['stats']['inr']['TUSD']['lowest_ask'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
@@ -58,7 +60,8 @@ class koinex(Exchange):
          self.nativePrice.btc = float(jsonfile['prices']['inr']['BTC'])
          self.nativePrice.ltc = float(jsonfile['prices']['inr']['LTC'])
          self.nativePrice.eth = float(jsonfile['prices']['inr']['ETH'])
-         self.nativePrice.bch = float(jsonfile['prices']['inr']['BCH'])
+         if cfg.ENABLEBCH:
+            self.nativePrice.bch = float(jsonfile['prices']['inr']['BCHABC'])
          self.nativePrice.tusd = float(jsonfile['prices']['inr']['TUSD'])
          self.price.btc = self.nativePrice.btc/usdinrrate
          self.price.ltc = self.nativePrice.ltc/usdinrrate
@@ -79,3 +82,4 @@ if __name__ == "__main__":
    print ("tusdLastTradedPrice : " + str(tusdLastTradedPrice))
    koinexobj = koinex()
    koinexobj.get_rates()
+   koinexobj.print_price()
