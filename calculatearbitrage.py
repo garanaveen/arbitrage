@@ -104,18 +104,23 @@ class CalculateArbitrage:
          cfg.logger.info("bestsell : %f %s", bestsell, sellcurrency) 
          cfg.logger.info("bestbuy : %f %s", bestbuy, buycurrency) 
       
-      alertspread = 2.5
+      alertspread = 4
       spread = bestsell - bestbuy
       spreadinfo = "Buy %s at %f on %s. Sell %s at %f arbitrage on %s." % (buycurrency, bestbuy, self.e1, sellcurrency, bestsell, self.e2)
       if spread > 0:
          spreadmessage = "Spread found. " + spreadinfo
          cfg.logger.info(spreadmessage)
-         if cfg.EMAIL_NOTIFY and spread > alertspread:
+         if cfg.EMAIL_NOTIFY and spread > alertspread and self.otherconditions(sellcurrency, buycurrency):
             ntf.notifyviaemail(spreadmessage, spreadmessage)
       else:
          spreadmessage = "Spread not found. " + spreadinfo
          cfg.logger.info(spreadmessage)
 
+   def otherconditions(self, sellcurrency, buycurrency):
+      condition1 = (sellcurrency != 'tusd')
+      condition2 = (buycurrency != 'tusd')
+      return condition1 and condition2 
+   
 
 if __name__ == "__main__":
    cfg.QUOTETYPE = "highest_bid"
@@ -127,6 +132,9 @@ if __name__ == "__main__":
  
    calarb = CalculateArbitrage(koine, gex)
    calarb.calculate_spread_between_buy_and_sell()
+   print "This should be true", calarb.otherconditions('btc', 'ltc')
+   print "This should be false", calarb.otherconditions('tusd', 'ltc')
+   print "This should be false", calarb.otherconditions('ltc', 'tusd')
 
 
    #bestbuy = -7%

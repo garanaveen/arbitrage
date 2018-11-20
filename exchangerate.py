@@ -29,8 +29,8 @@ def get_usdinr():
 def get_exchangerate():
    #if cfg.MATCHED_IN_PREVIOUS_ITERATION or (is_correct_frequency() and is_correct_platform()):
    if (is_correct_frequency() and is_correct_platform()):
-      cfg.logger.info("Getting live exchange rate")
       exchangerate = get_usdinr()
+      cfg.logger.info("Getting live exchange rate 1 USD = %s INR" % exchangerate)
    else:
       liveQuoteOriginalValue = cfg.LIVEQUOTE
       cfg.LIVEQUOTE = False
